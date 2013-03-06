@@ -50,7 +50,7 @@ add the secure function check and the validation of the mail (just check the cha
             header("Location: Preferences\preferences.php");
         } else {
             print "already user";
-            header("Location: index.php");
+            header("Location: welcom.php");
         }
     }
         ?>

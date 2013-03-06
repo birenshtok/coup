@@ -47,7 +47,7 @@ add the secure function check
                 $check = $Data_Base->Get_Next_Row($result);
                 if (!$check) {
                     print "Please register first";
-                    header("Location: index.php");
+                    header("Location: welcom.php");
                 } else {
                      $_SESSION['UserIdNum']=$check[ID];
                      header("Location: Preferences\preferences.php");
