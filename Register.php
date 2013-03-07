@@ -22,6 +22,8 @@ change the method to post.
             <input type='text' name='user_name' />
             <label>password: </label>
             <input type = 'password' name = 'password' />
+            <label>password_repeat: </label>
+            <input type = 'password' name = 'password_repeat' />
             <button type='submit'>Register!</button>
         </form>
     </body>

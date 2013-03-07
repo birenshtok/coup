@@ -40,10 +40,13 @@ add the secure function check and the validation of the mail (just check the cha
     $Data_Base = new mysql_connector();
     $user_name = secure($_REQUEST['user_name']);
     $password = secure($_REQUEST['password']);
+    $password_repeat = secure($_REQUEST['password_repeat']);
     if ($user_name == NULL || $password == NULL) {
         print "no!!!!!";
     } elseif (!is_valid_email($user_name)) {
         print "not a valid mail";
+    } elseif ($password != $password_repeat) {
+        print "please make sure that the password equals the password_repeat.";
     } else {
         if ($Data_Base->is_not_user($user_name)) {
             $Data_Base->insert_customer($user_name,$password);
