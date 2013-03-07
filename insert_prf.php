@@ -51,19 +51,6 @@ add the secure function check
                 int_null ($Price);
                 $Discount = secure($_REQUEST['Discount']);
                 int_null ($Discount);
-            ?>
-       
-
-            <form method='post' action=''>
-            youre Preferences:<br />
-            category: <?php print  $category ?>    name: <?php print  $name ?> company: <?php print  $company ?><br />
-            Date: <?php print  $Date ?>  Discount: <?php print  $Discount ?><br />
-            <input type="button" name="button1" value="button">  
-            </form>
-
-        
-
-        <?php
                 $Data_Base->insert_pref_cons($user_id, $category, $name, $company, $Date, $Price, $Discount);
             } elseif ($type == 'Res') { 
                 $name = secure($_REQUEST['Name']);

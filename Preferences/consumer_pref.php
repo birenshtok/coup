@@ -33,7 +33,7 @@ change the form of the date to: day,monthe,year.
         <?php 
             $_SESSION['type']='Con';
         ?>
-        <form method="post" action="..\insert_prf.php">  
+        <form method="post" action="confrim_con_preferences.php">  
            <p>Electronics:><input type="radio" name="pref" value="Electronics">  
               Culture: <input type="radio" name="pref" value="Culture"> 
               Sport: <input type="radio" name="pref" value="Sport">
