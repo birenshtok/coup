@@ -54,7 +54,6 @@ according to the new my_phpmailer class, there is no need to declear the mail se
                 $links = implode("<br/>",$Links_arr);
                 $data_base->insert_id_link($user_id,$links);
                 $Links_arr = array();
-                print_r ($links);
             }
         }
         $user_id = $row['ID'];
@@ -75,7 +74,6 @@ according to the new my_phpmailer class, there is no need to declear the mail se
             $result = $data_base->check_requset_con($category, $name, $company, $date, $price, $discount);
             $is_mach = $data_base->Get_Next_Row($result)['Link'];
             while ($is_mach){
-                print("ok con");
                 $result_mail = $data_base->Get_mail_link($is_mach,$user_id);
                 $already_mailed = $data_base->Get_Next_Row($result_mail);
                 if (!$already_mailed) {
@@ -93,7 +91,6 @@ according to the new my_phpmailer class, there is no need to declear the mail se
         $Links_arr[] = " ";
         $links = implode("<br/>",$Links_arr);
         $data_base->insert_id_link($user_id,$links);
-        print_r ($links);
     }
 
 
@@ -107,7 +104,6 @@ according to the new my_phpmailer class, there is no need to declear the mail se
             if ($Links_arr) { 
                 $links = implode("<br/>",$Links_arr);
                 $data_base->insert_id_link($user_id,$links);
-                print_r ($links);
                 $Links_arr = array();
             }
         }
@@ -138,7 +134,6 @@ according to the new my_phpmailer class, there is no need to declear the mail se
             $result = $data_base->check_requset_vac($Zone, $Country, $Town, $Rate, $Name_h, $Name_f, $Date_s, $Date_e, $Discount, $price);
             $is_mach = $data_base->Get_Next_Row($result)['Link'];
             while ($is_mach){
-                print("ok vac");
                 $result_mail = $data_base->Get_mail_link($is_mach,$user_id);
                 $already_mailed = $data_base->Get_Next_Row($result_mail);
                 if (!$already_mailed) {
@@ -156,7 +151,6 @@ according to the new my_phpmailer class, there is no need to declear the mail se
         $Links_arr[] = " "; 
         $links = implode("<br/>",$Links_arr);
         $data_base->insert_id_link($user_id,$links);
-        print_r ($links);
         $Links_arr = array();
     }
 
@@ -169,7 +163,6 @@ according to the new my_phpmailer class, there is no need to declear the mail se
             if ($Links_arr) { 
                 $links = implode("<br/>",$Links_arr);
                 $data_base->insert_id_link($user_id,$links);
-                print_r ($links);
                 $Links_arr = array();
             }
         }
@@ -195,7 +188,6 @@ according to the new my_phpmailer class, there is no need to declear the mail se
             $result = $data_base->check_requset_res($Name, $Type, $Zone, $Town, $price, $Date_s, $Date_e, $Discount);
             $is_mach = $data_base->Get_Next_Row($result)['Link'];
             while ($is_mach){
-                print("ok res");
                 $result_mail = $data_base->Get_mail_link($is_mach,$user_id);
                 $already_mailed = $data_base->Get_Next_Row($result_mail);
                 if (!$already_mailed) {
@@ -213,7 +205,6 @@ according to the new my_phpmailer class, there is no need to declear the mail se
         $Links_arr[] = " "; 
         $links = implode("<br/>",$Links_arr);
         $data_base->insert_id_link($user_id,$links);
-        print_r ($links);
         $Links_arr = array();
     }
     $Links_arr = array();
@@ -222,18 +213,15 @@ according to the new my_phpmailer class, there is no need to declear the mail se
     while ($row['ID']) {
         $Links_arr = array();
         $user_id = $row['ID'];
-        print ($user_id);
         $res = $data_base->Get_mail($user_id);
         $user_mail = $data_base->Get_Next_Row($res)['Email'];
         while ($user_id == $row['ID']){
            $Links_arr[] = $row['Link'];
-           print_r($Links_arr);
            $row = $data_base->Get_Next_Row($result);
         }
         // the mail massege settings.
         $mail = new my_phpmailer;
         $mail->AddAddress("$user_mail", "shye.itai");
-        print $user_mail;
         $mail->Subject = "Your Links";
         $mail->Body    = implode("<br/>",$Links_arr);
         $mail->IsHTML (true);
@@ -246,5 +234,5 @@ according to the new my_phpmailer class, there is no need to declear the mail se
 
         echo "Message was sent successfully";
     }
-    //$data_base->delete_id_link();
+    $data_base->delete_id_link();
 ?>
