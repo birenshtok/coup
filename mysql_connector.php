@@ -39,7 +39,7 @@ some more functions for the compare were added.
             $this->db_name = test;
             $this->server = localhost;
             $this->user_name = root;
-            $this->password = "0508427167";
+            $this->password = "55749";
             $this->id = 0;
             $link = $this->link();
             if (!$link) {
