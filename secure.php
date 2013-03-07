@@ -16,7 +16,7 @@ notify that the creation of the DB connection must be befor the use of this func
 
 <?php
     function secure ($arg) {
-        return mysql_real_escape_string($arg);
+       return mysql_real_escape_string($arg);
     }
 
 ?>

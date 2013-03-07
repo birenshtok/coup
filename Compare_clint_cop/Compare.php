@@ -32,7 +32,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
 
 <?php
     include "..\mysql_connector.php";
-    include "..\valid_field_funcs.php";
+    include "..\\valid_field_funcs.php";
     include "..\PHPMailer_v5.1\my_phpmailer.php";
 
     session_start();

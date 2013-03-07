@@ -29,7 +29,7 @@ fix the inserts bug.
         <?php 
             $_SESSION['type']='Vec';
         ?>
-        <form method="post" action="insert_prf.php">  
+        <form method="post" action="confrim_vac_preferences.php">  
            Zone: <input type="text" name="Zone">
            Country: <input type="text" name="Country">
            Town: <input type="text" name="Town">

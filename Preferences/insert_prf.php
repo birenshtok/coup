@@ -32,9 +32,9 @@ add the secure function check
     </head>
     <body>
         <?php
-            include "secure.php";
-            include "valid_field_funcs.php";
-            include "mysql_connector.php";
+            include "..\secure.php";
+            include "..\\valid_field_funcs.php";
+            include "..\mysql_connector.php";
             session_start();
             $type = $_SESSION['type'];
             $user_id = $_SESSION['UserIdNum'];

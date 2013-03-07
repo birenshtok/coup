@@ -29,7 +29,7 @@ fix the inserts bug.
         <?php 
             $_SESSION['type']='Res';
         ?>
-        <form method="post" action="insert_prf.php">  
+        <form method="post" action="confrim_rest_preferences.php">  
            Name of restaurant: <input type="text" name="Name">
            Type: <input type="text" name="Type">
            Zone: <input type="text" name="Zone">
