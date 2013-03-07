@@ -1,3 +1,12 @@
+<!--
+(C) Copyright 2013, by Intelligent Manufacturing Systems, Inc.
+
+07-03-13
+Getting here from consumer_pref.php
+the page where the customer comfrim his request.
+
+**shye
+-->
 <?php
     include "..\secure.php";
     include "..\\valid_field_funcs.php";
