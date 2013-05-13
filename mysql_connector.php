@@ -113,8 +113,15 @@ some more functions for the compare were added.
             return $result;
         }
 
-        public function insert_mail_link($Link, $ID){
+        public function insert_mail_link($Link, $ID) {
             return (mysql_query("INSERT INTO mail_link(ID, Link) VALUES('$ID','$Link')"));
+        }
+
+        public function insert_coup_consumer($Category, $Name, $Company, $Date, $Price, $Discount, $Link) {
+            $result = (mysql_query("INSERT INTO coup_consumer(Category, Name, Company, Date, Price, Discount, Link)
+                                    VALUES('$Category','$Name','$Company', '$Date', '$Price', '$Discount', '$Link')"));
+            print mysql_error();
+            return $result;
         }
 
 
