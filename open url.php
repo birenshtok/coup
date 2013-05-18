@@ -7,10 +7,10 @@
         $text = fgets($handle);
         $pattern = '/"dealPermaLink":"(.*?)"/';
         preg_match_all($pattern, $text, $matches);
-        for ($i = 0; $i < sizeof($matches[0]); $i+=sizeof($matches[0])) {
-            $name = $matches[1][$i];
-            insert_coup ("http://www.groupon.co.il$name","df");
+        foreach ($matches[1] as $Link) {
+            insert_coup ("http://www.groupon.co.il$Link","df");
             print ("<BR>");
+            break; // Just foe testing a single coupon.
         }
     }
 ?>
