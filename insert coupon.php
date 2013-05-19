@@ -1,7 +1,7 @@
 <?php
     function insert_coup($url,$category){
-        print($url);
-        $handle = fopen("$url", "r");
+        print("Link: $url");
+        $handle = fopen($url, "r");
         while (!feof($handle)){
             $text = fgets($handle);
             $discount_pattern = '/"savings2_values">([\\d]*)/';
@@ -10,14 +10,14 @@
             if (!$price_flag) {
                 if(preg_match($price_pattern, $text, $matches)) {
                     $price = $matches[1];
-                    print ("<BR> Place: $price");
+                    print ("<BR> Price: $price");
                     $price_flag = 1;
                 }
             }
             if (!$discount_flag) {
                 if(preg_match($discount_pattern, $text, $matches)) {
                     $discount = $matches[1];
-                    print ("<BR> Place: $discount");
+                    print ("<BR> Discount: $discount");
                     $discount_flag = 1;
                 }
             }
@@ -30,6 +30,7 @@
             }
         }
         print ("<BR> Category: $category");
+        fclose($handle);
     }
      
 ?>

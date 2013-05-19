@@ -7,14 +7,15 @@
         $text = fgets($handle);
         $pattern_Link = '/"dealPermaLink":"(.*?)"/';
         preg_match_all($pattern_Link, $text, $matches_Link);
-        $pattern_Category = '/itemsLocalDeals = \[{"category":"(.*?)"/';
+        $pattern_Category = '/"category":"(.*?)"/';
         preg_match_all($pattern_Category, $text, $matches_Category);
         foreach ($matches_Link[1] as $Link) {
             $category = $matches_Category[1][$i];
             insert_coup ("http://www.groupon.co.il$Link",$category);
             print ("<BR>");
             ++$i;
-            break; // Just foe testing a single coupon.
+            break; // Just for testing a single coupon.
         }
     }
+    fclose($handle);
 ?>
