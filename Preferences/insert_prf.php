@@ -58,13 +58,10 @@ add SESSION for all the catcory's
                 $Data_Base->insert_pref_cons($user_id, $category, $name, $company, $Date, $Price, $Discount);
             } elseif ($type == 'Res') { 
                 $name = secure($_SESSION['Name']);
-                print (OK);
-                print ($name);
                 $Type = secure($_SESSION['Type']);
                 $Zone = secure($_SESSION['Zone']);
                 $Town = secure($_SESSION['Town']);
                 $Price = secure($_SESSION['Price']);
-                print ($Price);
                 int_null ($Price);
                 $Date_d = secure($_SESSION['Day']);
                 $Date_m = secure($_SESSION['Monthe']);
