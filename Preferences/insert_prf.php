@@ -71,24 +71,24 @@ add SESSION for all the catcory's
                 int_null ($Discount);
                 $Data_Base->insert_pref_res($user_id, $name, $Type, $Zone, $Town, $Price, $Date, $Discount);
             } else {
-                $Zone = secure($_REQUEST['Zone']);
-                $Country = secure($_REQUEST['Country']);
-                $Town = secure($_REQUEST['Town']);
-                $Class = secure($_REQUEST['Class']);
+                $Zone = secure($_SESSION['Zone']);
+                $Country = secure($_SESSION['Country']);
+                $Town = secure($_SESSION['Town']);
+                $Class = secure($_SESSION['Class']);
                 int_null ($Class);
-                $Name_hotel = secure($_REQUEST['Name_hotel']);
-                $Name_flight = secure($_REQUEST['Name_flight']);
-                $Date_sd = secure($_REQUEST['Day']);
-                $Date_sm = secure($_REQUEST['Monthe']);
-                $Date_sy = secure($_REQUEST['Year']);
+                $Name_hotel = secure($_SESSION['Name_hotel']);
+                $Name_flight = secure($_SESSION['Name_flight']);
+                $Date_sd = secure($_SESSION['Day']);
+                $Date_sm = secure($_SESSION['Monthe']);
+                $Date_sy = secure($_SESSION['Year']);
                 $Date_s = date_null ($Date_sd,$Date_sm,$Date_sy);
-                $Date_ld = secure($_REQUEST['LDay']);
-                $Date_lm = secure($_REQUEST['LMonthe']);
-                $Date_ly = secure($_REQUEST['LYear']);
+                $Date_ld = secure($_SESSION['LDay']);
+                $Date_lm = secure($_SESSION['LMonthe']);
+                $Date_ly = secure($_SESSION['LYear']);
                 $Date_e = date_null ($Date_ld, $Date_lm, $Date_ly);
-                $Price = secure($_REQUEST['price']);
+                $Price = secure($_SESSION['price']);
                 int_null ($Price);
-                $Discount = secure($_REQUEST['discount']);
+                $Discount = secure($_SESSION['discount']);
                 int_null ($Discount);
                 $Data_Base->insert_pref_vac($user_id, $Zone, $Country, $Town, $Class, $Name_hotel, $Name_flight, $Date_s, $Date_e, $Price, $Discount);
             }
