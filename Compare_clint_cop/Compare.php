@@ -166,9 +166,10 @@ according to the new my_phpmailer class, there is no need to declear the mail se
                 $Links_arr = array();
             }
         }
-        $user_id = $row['ID'];
-        while ($user_id == $row['ID']) {
+        $user_id = $row['ID']; // get the user id.
+        while ($user_id == $row['ID']) { // get over all requests from one user.
             
+            // make the variables ready for the compare.
             $Name = $row['Name'];
             char_comparable($Name);
             $Type = $row['Type'];
@@ -177,26 +178,33 @@ according to the new my_phpmailer class, there is no need to declear the mail se
             char_comparable($Town); 
             $Zone = $row['Zone'];
             char_comparable($Zone);
-            $Date_s = $row['Date'];
+            /*$Date_s = $row['Date'];
             date_res_comparable($Date_s);
             $Date_e = $row['Date'];
-            date_e_res_comparable($Date_e);
+            date_e_res_comparable($Date_e);*/
             $price = $row['Price'];
             price_comparable($price);
             $Discount = $row['Discount'];
             discount_comparable($Discount);
-            $result = $data_base->check_requset_res($Name, $Type, $Zone, $Town, $price, $Date_s, $Date_e, $Discount);
+            
+            //compare.
+            $result = $data_base->check_requset_res($Name, $Type, $Zone, $Town, $price, $Discount);
+            
+            //check if there were any matches.
             $is_mach = $data_base->Get_Next_Row($result)['Link'];
+            
             while ($is_mach){
+                
+                //check if this coupon already mailed to the user. 
                 $result_mail = $data_base->Get_mail_link($is_mach,$user_id);
                 $already_mailed = $data_base->Get_Next_Row($result_mail);
+                
+                //if not.
                 if (!$already_mailed) {
                     $Links_arr[] = $is_mach;
                     $data_base->insert_mail_link($is_mach, $user_id);
-                    $is_mach = $data_base->Get_Next_Row($result)['Link'];
-                } else {
-                    $is_mach = $data_base->Get_Next_Row($result)['Link'];
                 }
+                $is_mach = $data_base->Get_Next_Row($result)['Link'];        
             }
             $row = $data_base->Get_Next_Row($pref_res);
         }

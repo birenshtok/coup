@@ -114,9 +114,13 @@ some more functions for the compare were added.
         }
 
         public function insert_mail_link($Link, $ID) {
-            return (mysql_query("INSERT INTO mail_link(ID, Link) VALUES('$ID','$Link')"));
+            (mysql_query("INSERT INTO mail_link(ID, Link) VALUES('$ID','$Link')"));
+            
+            print mysql_error();
         }
 
+        
+        /* insert coupons methodes.*/
         public function insert_coup_consumer($Category, $Name, $Company, $Date, $Price, $Discount, $Link) {
             $result = (mysql_query("INSERT INTO coup_consumer(Category, Name, Company, Date, Price, Discount, Link)
                                     VALUES('$Category','$Name','$Company', '$Date', '$Price', '$Discount', '$Link')"));
@@ -124,7 +128,13 @@ some more functions for the compare were added.
             return $result;
         }
 
-
+        
+        public function insert_coupon_restaurants($Name, $Type, $Zone, $Town, $price, $Last_date_to_buy, $Discount, $Link) {
+            $result = (mysql_query("INSERT INTO coup_res(Name,Type,Zone,Town,Price,Last_date_to_buy,Discount,Link,Deleted) 
+                                    VALUES('$Name', '$Type', '$Zone', '$Town', '$price', '$Last_date_to_buy', '$Discount', '$Link',0)"));
+            print mysql_error();
+            return $result;
+        }
 
         public function Get_pref_c(){
             $result = (mysql_query("SELECT * FROM pref_c ORDER BY ID"));
@@ -157,10 +167,10 @@ some more functions for the compare were added.
         }
 
         /*check_requset_res*/
-        public function check_requset_res($Name, $Type, $Zone, $Town, $price, $Date_s, $Date_e, $Discount){
-            $result = (mysql_query("SELECT coup_res.Link FROM coup_res 
-                                    WHERE Name $Name && Type $Type && Zone $Zone && Town $Town &&
-                                                  price $price && Date_s $Date_s && Date_e $Date_e && Discount $Discount"));
+        public function check_requset_res($Name, $Type, $Zone, $Town, $price, /*$Date_s, $Date_e, */$Discount){
+            $result = (mysql_query("SELECT active_coup_res.Link FROM active_coup_res 
+                                    WHERE Name $Name && Town $Town &&
+                                                  price $price && Discount $Discount"));
             print mysql_error();
             return $result;
         }
@@ -173,8 +183,7 @@ some more functions for the compare were added.
             print mysql_error();
             return $result;
         }
-        /*&& Date_s $Date_s &&
-                                                   Date_e $Date_e && Discount $Discount && price $price*/
+ 
         /*check_requset_con*/
         public function check_requset_con($category, $name, $company, $date, $price, $discount){
             $result = (mysql_query("SELECT coup_consumer.Link FROM coup_consumer 
