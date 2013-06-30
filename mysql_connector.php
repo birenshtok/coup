@@ -167,7 +167,7 @@ some more functions for the compare were added.
         }
 
         /*check_requset_res*/
-        public function check_requset_res($Name, $Type, $Zone, $Town, $price, /*$Date_s, $Date_e, */$Discount){
+        public function check_requset_res($Name, $Type, $Zone, $Town, $price, $Discount){
             $result = (mysql_query("SELECT active_coup_res.Link FROM active_coup_res 
                                     WHERE Name $Name && Town $Town &&
                                                   price $price && Discount $Discount"));

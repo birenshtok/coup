@@ -543,7 +543,7 @@ class PHPMailer {
    * @return bool
    */
   public function Send() {
-      print_r ($this->to);
+      //print_r ($this->to);
     try {
       if ((count($this->to) + count($this->cc) + count($this->bcc)) < 1) {
         throw new phpmailerException($this->Lang('provide_address'), self::STOP_CRITICAL);

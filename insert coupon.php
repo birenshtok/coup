@@ -91,8 +91,8 @@
         fclose($handle);
     }  
         if(!$row) {
-            $Type = "";
-            $Zone = "";
+            $Type = "NULL";
+            $Zone = "NULL";
             //insert the coupon to the DB.
             $data_base->insert_coupon_restaurants($name, $Type, $Zone, $place, $price, $Last_date_to_buy, $discount, $url);
         }

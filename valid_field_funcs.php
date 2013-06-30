@@ -41,7 +41,7 @@ two new function:
             $char = " >= 'a'";
         }
         else{
-            $char="like '$char'"; 
+            $char="like '%$char%'"; 
         }
     }
 

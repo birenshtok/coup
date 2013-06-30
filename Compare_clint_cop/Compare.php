@@ -178,15 +178,11 @@ according to the new my_phpmailer class, there is no need to declear the mail se
             char_comparable($Town); 
             $Zone = $row['Zone'];
             char_comparable($Zone);
-            /*$Date_s = $row['Date'];
-            date_res_comparable($Date_s);
-            $Date_e = $row['Date'];
-            date_e_res_comparable($Date_e);*/
             $price = $row['Price'];
             price_comparable($price);
             $Discount = $row['Discount'];
             discount_comparable($Discount);
-            
+
             //compare.
             $result = $data_base->check_requset_res($Name, $Type, $Zone, $Town, $price, $Discount);
             
