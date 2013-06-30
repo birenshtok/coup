@@ -85,11 +85,8 @@
         $result = (mysql_query("SELECT coup_res.Link FROM coup_res 
                                 WHERE Link LIKE '$link%'"));
         print mysql_error();
-        $row = $data_base->Get_Next_Row($result);
-        }
-        print ("<BR> Category: $category");
-        fclose($handle);
-    }  
+        $row = $data_base->Get_Next_Row($result);  
+        
         if(!$row) {
             $Type = "NULL";
             $Zone = "NULL";
