@@ -31,6 +31,7 @@ two new function:
     }
     // take care of null int field.
     function int_null (&$int) {
+        print ($int);
         if (!$int) {
             $int = '0';
         }

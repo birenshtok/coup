@@ -6,6 +6,11 @@ Getting here from consumer_pref.php
 the page where the customer comfrim his request.
 
 **shye
+
+30-06-13
+add SESSION for all the catcory's
+
+**shye
 -->
 <?php
     include "..\secure.php";
@@ -13,6 +18,14 @@ the page where the customer comfrim his request.
     include "..\mysql_connector.php";
     session_start();
     $Data_Base = new mysql_connector();
+    $_SESSION['pref']=secure($_REQUEST['pref']);
+    $_SESSION['Product']=secure($_REQUEST['Product']);
+    $_SESSION['Company']=secure($_REQUEST['Company']);
+    $_SESSION['Price']=secure($_REQUEST['Price']);
+    $_SESSION['Day']=secure($_REQUEST['Day']);
+    $_SESSION['Monthe']=secure($_REQUEST['Monthe']);
+    $_SESSION['Year']=secure($_REQUEST['Year']);
+    $_SESSION['Discount']=secure($_REQUEST['Discount']);
     $type = $_SESSION['type'];
     $user_id = $_SESSION['UserIdNum'];
     $category = secure($_REQUEST['pref']);

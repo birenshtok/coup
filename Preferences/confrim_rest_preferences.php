@@ -6,6 +6,10 @@ Getting here from Restaurant_pref.php
 the page where the customer comfrim his request.
 
 **shye
+
+30-06-13
+add SESSION for all the catcory's
+**shye
 -->
 
 <?php
@@ -14,6 +18,14 @@ the page where the customer comfrim his request.
     include "..\mysql_connector.php";
     session_start();
     $Data_Base = new mysql_connector();
+    $_SESSION['Name']=secure($_REQUEST['Name']);
+    $_SESSION['Zone']=secure($_REQUEST['Zone']);
+    $_SESSION['Town']=secure($_REQUEST['Town']);
+    $_SESSION['Price']=secure($_REQUEST['Price']);
+    $_SESSION['Day']=secure($_REQUEST['Day']);
+    $_SESSION['Monthe']=secure($_REQUEST['Monthe']);
+    $_SESSION['Year']=secure($_REQUEST['Year']);
+    $_SESSION['Discount']=secure($_REQUEST['Discount']);
     $type = $_SESSION['type'];
     $user_id = $_SESSION['UserIdNum'];
     $category = secure($_REQUEST['pref']);
@@ -21,13 +33,13 @@ the page where the customer comfrim his request.
                 $Type = secure($_REQUEST['Type']);
                 $Zone = secure($_REQUEST['Zone']);
                 $Town = secure($_REQUEST['Town']);
-                $Price = secure($_REQUEST['price']);
+                $Price = secure($_REQUEST['Price']);
                 int_null ($Price);
                 $Date_d = secure($_REQUEST['Day']);
                 $Date_m = secure($_REQUEST['Monthe']);
                 $Date_y = secure($_REQUEST['Year']);
                 $Date = date_null ($Date_d,$Date_m,$Date_y);
-                $Discount = secure($_REQUEST['discount']);
+                $Discount = secure($_REQUEST['Discount']);
                 int_null ($Discount);
 ?>
 

@@ -6,6 +6,10 @@ Getting here from Vacation_pref.php
 the page where the customer comfrim his request.
 
 **shye
+
+30-06-13
+add SESSION for all the catcory's
+**shye
 -->
 
 <?php
@@ -14,6 +18,22 @@ the page where the customer comfrim his request.
     include "..\mysql_connector.php";
     session_start();
     $Data_Base = new mysql_connector();
+
+     $_SESSION['Zone'] = secure($_REQUEST['Zone']);
+     $_SESSION['Country'] = secure($_REQUEST['Country']);
+     $_SESSION['Town'] = secure($_REQUEST['Town']);
+     $_SESSION['Class'] = secure($_REQUEST['Class']);
+     $_SESSION['Name_hotel'] = secure($_REQUEST['Name_hotel']);
+     $_SESSION['Name_flight'] = secure($_REQUEST['Name_flight']);
+     $_SESSION['Day'] = secure($_REQUEST['Day']);
+     $_SESSION['Monthe'] = secure($_REQUEST['Monthe']);
+     $_SESSION['Year'] = secure($_REQUEST['Year']);
+     $_SESSION['LDay'] = secure($_REQUEST['LDay']);
+     $_SESSION['LMonthe'] = secure($_REQUEST['LMonthe']);
+     $_SESSION['LYear'] = secure($_REQUEST['LYear']);
+     $_SESSION['Price'] = secure($_REQUEST['Price']);
+     $_SESSION['Discount'] = secure($_REQUEST['Discount']);
+
     $type = $_SESSION['type'];
     $user_id = $_SESSION['UserIdNum'];
     $category = secure($_REQUEST['pref']);

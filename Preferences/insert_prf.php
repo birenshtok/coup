@@ -21,6 +21,10 @@ in addition we use the new func int_null to deal with null int fields.
 add the secure function check
 
 **itai
+
+30-06-13
+add SESSION for all the catcory's
+**shye
 -->
 
 
@@ -40,30 +44,33 @@ add the secure function check
             $user_id = $_SESSION['UserIdNum'];
             $Data_Base = new mysql_connector();
             if ($type == 'Con') {
-                $category = secure($_REQUEST['pref']);
-                $name = secure($_REQUEST['Product']);
-                $company = secure($_REQUEST['Company']);
-                $Date_d = secure($_REQUEST['Day']);
-                $Date_m = secure($_REQUEST['Monthe']);
-                $Date_y = secure($_REQUEST['Year']);
+                $category = secure($_SESSION['pref']);
+                $name = secure($_SESSION['Product']);
+                $company = secure($_SESSION['Company']);
+                $Date_d = secure($_SESSION['Day']);
+                $Date_m = secure($_SESSION['Monthe']);
+                $Date_y = secure($_SESSION['Year']);
                 $Date = date_null ($Date_d,$Date_m,$Date_y);
-                $Price = secure($_REQUEST['Price']);
+                $Price = secure($_SESSION['Price']);
                 int_null ($Price);
-                $Discount = secure($_REQUEST['Discount']);
+                $Discount = secure($_SESSION['Discount']);
                 int_null ($Discount);
                 $Data_Base->insert_pref_cons($user_id, $category, $name, $company, $Date, $Price, $Discount);
             } elseif ($type == 'Res') { 
-                $name = secure($_REQUEST['Name']);
-                $Type = secure($_REQUEST['Type']);
-                $Zone = secure($_REQUEST['Zone']);
-                $Town = secure($_REQUEST['Town']);
-                $Price = secure($_REQUEST['price']);
+                $name = secure($_SESSION['Name']);
+                print (OK);
+                print ($name);
+                $Type = secure($_SESSION['Type']);
+                $Zone = secure($_SESSION['Zone']);
+                $Town = secure($_SESSION['Town']);
+                $Price = secure($_SESSION['Price']);
+                print ($Price);
                 int_null ($Price);
-                $Date_d = secure($_REQUEST['Day']);
-                $Date_m = secure($_REQUEST['Monthe']);
-                $Date_y = secure($_REQUEST['Year']);
+                $Date_d = secure($_SESSION['Day']);
+                $Date_m = secure($_SESSION['Monthe']);
+                $Date_y = secure($_SESSION['Year']);
                 $Date = date_null ($Date_d,$Date_m,$Date_y);
-                $Discount = secure($_REQUEST['discount']);
+                $Discount = secure($_SESSION['Discount']);
                 int_null ($Discount);
                 $Data_Base->insert_pref_res($user_id, $name, $Type, $Zone, $Town, $Price, $Date, $Discount);
             } else {
