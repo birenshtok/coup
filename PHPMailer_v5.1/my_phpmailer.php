@@ -14,7 +14,7 @@ This is the my_phpmailer class that extends the phpmailer class, thanks to this 
 class my_phpmailer extends phpmailer {
     // Set default variables for all new objects
     var $From     = "shye.itai.biren@gmail.com";
-    var $FromName = "Copon";
+    var $FromName = "Coupon4you";
     var $Host     = "smtp.gmail.com";
     var $Mailer   = "smtp";                         // Alternative to IsSMTP()
     var $WordWrap = 75;
