@@ -24,9 +24,9 @@ two new function:
     // take care of null date field.
     function date_null ($d, $m, $y) {
         if (!$d || !$m || !$y) {
-            return '00.00.00';
+            return '00-00-00';
         } else {
-            return "$y.$m.$d";
+            return "$y-$m-$d";
         }
     }
     // take care of null int field.

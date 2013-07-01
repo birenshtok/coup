@@ -19,6 +19,7 @@ add SESSION for all the catcory's
     session_start();
     $Data_Base = new mysql_connector();
     $_SESSION['Name']=secure($_REQUEST['Name']);
+    $_SESSION['Type']=secure($_REQUEST['Type']);
     $_SESSION['Zone']=secure($_REQUEST['Zone']);
     $_SESSION['Town']=secure($_REQUEST['Town']);
     $_SESSION['Price']=secure($_REQUEST['Price']);

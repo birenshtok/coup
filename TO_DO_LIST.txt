@@ -5,3 +5,4 @@ To do list:
 2. Reorganized mysql_connector(more class).
 3. To check if the users fill all the required boxes.
 4. Make un UPER_CAES.
+5. Fix the problem with insert a pref right after register.
