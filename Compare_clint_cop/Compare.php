@@ -238,5 +238,5 @@ according to the new my_phpmailer class, there is no need to declear the mail se
 
         echo "Message was sent successfully";
     }
-    //$data_base->delete_id_link();
+    $data_base->delete_id_link();
 ?>
