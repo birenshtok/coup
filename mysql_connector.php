@@ -91,7 +91,8 @@ some more functions for the compare were added.
             return (mysql_query("INSERT INTO customers(ID,Email,Password) VALUES($this->id,'$mail','$password')"));
         }
         public function insert_id_link($id,$links){
-            return (mysql_query("INSERT INTO id_link(ID,Link) VALUES('$id','$links')"));
+            (mysql_query("INSERT INTO id_link(ID,Link) VALUES('$id','$links')"));
+            print mysql_error();
         }
 
         public function insert_pref_cons($user_id, $category, $name, $company, $date, $price, $discount){
