@@ -88,7 +88,8 @@ some more functions for the compare were added.
         //insert to table
         public function insert_customer($mail, $password){
             $this->id = $this->Get_Last_id() + 1; //insert the next id into the id field
-            return (mysql_query("INSERT INTO customers(ID,Email,Password) VALUES($this->id,'$mail','$password')"));
+            (mysql_query("INSERT INTO customers(ID,Email,Password) VALUES($this->id,'$mail','$password')"));
+            return $this->id;
         }
         public function insert_id_link($id,$links){
             (mysql_query("INSERT INTO id_link(ID,Link) VALUES('$id','$links')"));

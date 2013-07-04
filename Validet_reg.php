@@ -27,6 +27,7 @@ add the secure function check and the validation of the mail (just check the cha
     include "ValidateMail.php";
     include "mysql_connector.php";
     include "secure.php";
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +50,8 @@ add the secure function check and the validation of the mail (just check the cha
         print "please make sure that the password equals the password_repeat.";
     } else {
         if ($Data_Base->is_not_user($user_name)) {
-            $Data_Base->insert_customer($user_name,$password);
+            $User_ID = $Data_Base->insert_customer($user_name,$password);
+            $_SESSION['UserIdNum']=$User_ID;
             header("Location: Preferences\preferences.php");
         } else {
             print "already user";
