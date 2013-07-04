@@ -161,7 +161,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
     while ($row != NULL){
         if (!$user_id){
             if ($Links_arr) { 
-                $links = implode("<br/>",$Links_arr);
+                $links = implode("<br/><br/>Link:<br/>",$Links_arr);
                 $data_base->insert_id_link($user_id,$links);
                 $Links_arr = array();
             }
@@ -207,7 +207,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
     }
     if ($Links_arr) {
         $Links_arr[] = " "; 
-        $links = implode("<br/>",$Links_arr);
+        $links = implode("<br/><br/>Link:<br/>",$Links_arr);
         $data_base->insert_id_link($user_id,$links);
         $Links_arr = array();
     }
@@ -227,7 +227,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
         $mail = new my_phpmailer;
         $mail->AddAddress("$user_mail", "shye.itai");
         $mail->Subject = "Your Links";
-        $mail->Body    = implode("<br/>",$Links_arr);
+        $mail->Body    = implode("<br/>",$Links_arr); // Add a line between the sections of links.
         $mail->IsHTML (true);
         /*$mail->AddAttachment("c:/temp/11-10-00.zip", "new_name.zip");*/  // optional name
 
