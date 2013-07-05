@@ -11,11 +11,10 @@
             $text = fgets($handle);
             $discount_pattern = '/"savings2_values">([\\d]*)/';
             $price_pattern = '/"noWrap">([\\d,]*)/'; //the pattern to find the price take in calc that the price may be more than 3 digits.
-            $place_pattern = '/placename" content="(.*)"/';
+            $place_pattern = '/cityName">(.*?)</';
             $name_pattern = '/<meta name="keywords" content="(.*?)"/';
             $Last_date_to_buy_pattern = '/jcurrentTimeLeft" value="([\\d]*)"/';
-            $use_pattern = '/תקף (.*)/';
-            $place_pattern = '/placename" content="(.*?)"/';
+            //$use_pattern = '/תקף (.*)/';
             if (!$price_flag) {
                 if(preg_match($price_pattern, $text, $matches)) {
                     $price = $matches[1];
@@ -62,13 +61,13 @@
                 }
             }
 
-            if (!$use_flag) {
+            /*if (!$use_flag) {
                 if(preg_match($use_pattern, $text, $matches)) {
                     $use = $matches[1];
                     print ("<BR> Use: $use");
                     $use_flag = 1;
                 }
-            }
+            }*/
 
             if ($price_flag && $discount_flag && $place_flag && $name_flag && $buy_time_flag && $use_flag) // for efficiency
                 break;
