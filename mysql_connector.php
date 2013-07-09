@@ -168,6 +168,11 @@ some more functions for the compare were added.
             return $result;
         }
 
+        public function Delete_Old_Coup_Res(){
+            (mysql_query("Update Coup_res Set Deleted = 1 Where Last_date_to_buy < now()"));
+            print mysql_error();
+        }
+
         /*check_requset_res*/
         public function check_requset_res($Name, $Type, $Zone, $Town, $price, $Discount){
             $result = (mysql_query("SELECT active_coup_res.Link FROM active_coup_res 
