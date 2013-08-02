@@ -3,7 +3,7 @@
     include "insert coupon.php";
     $handle = fopen("http://www.groupon.co.il/all-deals/tel-aviv-iw", "r");
     
-    //Goes over all the cities in groupon.
+    //Goes over all the cities in Groupon.
     while (!feof($handle)) {
         $text = fgets($handle);
         $pattern_Link = '/onclick="window.location.href = \'(.*?)\'/';
