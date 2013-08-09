@@ -56,8 +56,8 @@ according to the new my_phpmailer class, there is no need to declear the mail se
                 $Links_arr = array();
             }
         }
-        $user_id = $row['ID'];
-        while ($user_id == $row['ID']) {
+        $user_id = $row['Customer_ID'];
+        while ($user_id == $row['Customer_ID']) {
 
             $category = $row['Category'];
             char_comparable($category);
@@ -107,8 +107,8 @@ according to the new my_phpmailer class, there is no need to declear the mail se
                 $Links_arr = array();
             }
         }
-        $user_id = $row['ID'];
-        while ($user_id == $row['ID']) {
+        $user_id = $row['Customer_ID'];
+        while ($user_id == $row['Customer_ID']) {
             
             $Zone = $row['Zone'];
             char_comparable($Zone);
@@ -166,8 +166,8 @@ according to the new my_phpmailer class, there is no need to declear the mail se
                 $Links_arr = array();
             }
         }
-        $user_id = $row['ID']; // get the user id.
-        while ($user_id == $row['ID']) { // get over all requests from one user.
+        $user_id = $row['Customer_ID']; // get the user id.
+        while ($user_id == $row['Customer_ID']) { // get over all requests from one user.
             
             // make the variables ready for the compare.
             $Name = $row['Name'];

@@ -123,7 +123,7 @@ some more functions for the compare were added.
         }
 
         public function insert_mail_link($Link, $ID) {
-            (mysql_query("INSERT INTO mail_link(ID, Link) VALUES('$ID','$Link')"));
+            (mysql_query("INSERT INTO mail_link(Customer_ID, Link) VALUES('$ID','$Link')"));
             
             print mysql_error();
         }
@@ -170,7 +170,7 @@ some more functions for the compare were added.
         }
 
         public function Get_mail_link($Link, $ID){
-            $result = (mysql_query("SELECT * FROM mail_link WHERE Link LIKE '$Link' && ID LIKE '$ID'"));
+            $result = (mysql_query("SELECT * FROM mail_link WHERE Link LIKE '$Link' && Customer_ID LIKE '$ID'"));
             print mysql_error();
             return $result;
         }
