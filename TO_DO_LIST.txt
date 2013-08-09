@@ -7,6 +7,6 @@ To do list:
 4. Make an UPER_CASE.
 - FIXED - 5. Fix the problem with insert a pref right after register.
 - FIXED - 6.Add a real ID column to the pref tables for each pref.
-7.Add a pref_id column to the mail_link table.
+- FIXED - 7.Add a pref_id column to the mail_link table.
 8.Write the sql errors to a log file and not to the screen.
 9.Make the right code to run once a day auto.

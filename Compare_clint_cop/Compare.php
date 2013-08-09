@@ -44,7 +44,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
     $mail = new my_phpmailer;
 
     /*consumer check  */
-    $pref_con = $data_base->Get_pref_c();
+    /*$pref_con = $data_base->Get_pref_c();
     $row = $data_base->Get_Next_Row($pref_con);
     $Links_arr = array();
     while ($row != NULL){
@@ -73,6 +73,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
             discount_comparable($discount);
             $result = $data_base->check_requset_con($category, $name, $company, $date, $price, $discount);
             $is_mach = $data_base->Get_Next_Row($result)['Link'];
+
             while ($is_mach){
                 $result_mail = $data_base->Get_mail_link($is_mach,$user_id);
                 $already_mailed = $data_base->Get_Next_Row($result_mail);
@@ -96,7 +97,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
 
 
     /*vacation check  */
-    $pref_vac = $data_base->Get_pref_vac();
+    /*$pref_vac = $data_base->Get_pref_vac();
     $row = $data_base->Get_Next_Row($pref_vac);
     $Links_arr = array();
     while ($row != NULL){
@@ -167,6 +168,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
             }
         }
         $user_id = $row['Customer_ID']; // get the user id.
+        $pref_id = $row['ID']; // get the pref id.
         while ($user_id == $row['Customer_ID']) { // get over all requests from one user.
             
             // make the variables ready for the compare.
@@ -198,7 +200,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
                 //if not.
                 if (!$already_mailed) {
                     $Links_arr[] = $is_mach;
-                    $data_base->insert_mail_link($is_mach, $user_id);
+                    $data_base->insert_mail_link($is_mach, $user_id,$pref_id);
                 }
                 $is_mach = $data_base->Get_Next_Row($result)['Link'];        
             }
@@ -215,8 +217,10 @@ according to the new my_phpmailer class, there is no need to declear the mail se
     $result = $data_base->Get_links();
     $row = $data_base->Get_Next_Row($result);
     while ($row['ID']) {
+        print($row['ID']);
         $Links_arr = array();
         $user_id = $row['ID'];
+        print($user_id);
         $res = $data_base->Get_mail($user_id);
         $user_mail = $data_base->Get_Next_Row($res)['Email'];
         while ($user_id == $row['ID']){

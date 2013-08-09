@@ -122,8 +122,8 @@ some more functions for the compare were added.
             return $result;
         }
 
-        public function insert_mail_link($Link, $ID) {
-            (mysql_query("INSERT INTO mail_link(Customer_ID, Link) VALUES('$ID','$Link')"));
+        public function insert_mail_link($Link, $Customer_ID,$ID) {
+            (mysql_query("INSERT INTO mail_link(Customer_ID, Link, ID) VALUES('$Customer_ID','$Link','$ID')"));
             
             print mysql_error();
         }
@@ -182,7 +182,7 @@ some more functions for the compare were added.
 
         /*check_requset_res*/
         public function check_requset_res($Name, $Type, $Zone, $Town, $price, $Discount){
-            $result = (mysql_query("SELECT active_coup_res.Link FROM active_coup_res 
+            $result = (mysql_query("SELECT * FROM active_coup_res 
                                     WHERE Name $Name && Town $Town &&
                                                   price $price && Discount $Discount"));
             print mysql_error();
@@ -191,7 +191,7 @@ some more functions for the compare were added.
 
         /*check_requset_vac*/
         public function check_requset_vac($Zone, $Country, $Town, $Rate, $Name_h, $Name_f, $Date_s, $Date_e, $Discount, $price){
-             $result = (mysql_query("SELECT coup_vac.Link FROM coup_vac 
+             $result = (mysql_query("SELECT * FROM coup_vac 
                                     WHERE Zone $Zone && Country $Country && Town $Town &&
                                                   Rate $Rate && Name_h $Name_h && Name_f $Name_f "));
             print mysql_error();
@@ -200,7 +200,7 @@ some more functions for the compare were added.
  
         /*check_requset_con*/
         public function check_requset_con($category, $name, $company, $date, $price, $discount){
-            $result = (mysql_query("SELECT coup_consumer.Link FROM coup_consumer 
+            $result = (mysql_query("SELECT * FROM coup_consumer 
                                     WHERE category $category && name $name && company $company &&
                                                   date $date && price $price && discount $discount"));
             print mysql_error();
