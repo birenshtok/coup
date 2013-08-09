@@ -33,14 +33,17 @@ some more functions for the compare were added.
         private $server;
         private $user_name;
         private $password;
-        private $id;
+        private $user_id;
+        private $pref_r_id;
+        private $pref_c_id;
+        private $pref_v_id;
         
         function mysql_connector () {
             $this->db_name = test;
             $this->server = localhost;
             $this->user_name = root;
             $this->password = "55749";
-            $this->id = 0;
+            $this->user_id = 0;
             $link = $this->link();
             if (!$link) {
                 die("Could not connect: " . mysql_error());
@@ -49,6 +52,11 @@ some more functions for the compare were added.
             if (!$db_selected) {
                 die ("Can't use internet_database : " . mysql_error());
             }
+
+            $this->user_id = $this->Get_Last_id('customers') + 1; //insert the next id into the id field
+            $this->pref_r_id = $this->Get_Last_id('pref_r') + 1;
+            $this->pref_c_id = $this->Get_Last_id('pref_c') + 1;
+            $this->pref_v_id = $this->Get_Last_id('pref_v') + 1;
         }
         public function Set_table_name($name){
             $this->table_name = name;
@@ -69,7 +77,7 @@ some more functions for the compare were added.
             return $this->password;
         }
         public function get_user_id () {
-            return $this->id;
+            return $this->user_id;
         }
 
 
@@ -87,9 +95,8 @@ some more functions for the compare were added.
 
         //insert to table
         public function insert_customer($mail, $password){
-            $this->id = $this->Get_Last_id() + 1; //insert the next id into the id field
-            (mysql_query("INSERT INTO customers(ID,Email,Password) VALUES($this->id,'$mail','$password')"));
-            return $this->id;
+            (mysql_query("INSERT INTO customers(ID,Email,Password) VALUES($this->user_id,'$mail','$password')"));
+            return $this->user_id;
         }
         public function insert_id_link($id,$links){
             (mysql_query("INSERT INTO id_link(ID,Link) VALUES('$id','$links')"));
@@ -97,20 +104,20 @@ some more functions for the compare were added.
         }
 
         public function insert_pref_cons($user_id, $category, $name, $company, $date, $price, $discount){
-            $result = (mysql_query("INSERT INTO pref_c(ID,Category,Name,Company,Date,Price,Discount) 
-                                    VALUES($user_id,'$category','$name','$company','$date','$price','$discount')"));
+            $result = (mysql_query("INSERT INTO pref_c(Customer_ID,Category,Name,Company,Date,Price,Discount,ID) 
+                                    VALUES($user_id,'$category','$name','$company','$date','$price','$discount',$this->pref_c_id)"));
             print mysql_error();
             return $result;
         }
         public function insert_pref_res($user_id, $name, $Type, $Zone, $Town, $price, $Date, $Discount) {
-            $result = (mysql_query("INSERT INTO pref_r(ID,Name,Type,Zone,Town,Price,Date,Discount) 
-                                    VALUES($user_id, '$name', '$Type', '$Zone', '$Town', '$price', '$Date', '$Discount')"));
+            $result = (mysql_query("INSERT INTO pref_r(Customer_ID,Name,Type,Zone,Town,Price,Date,Discount,ID) 
+                                    VALUES($user_id, '$name', '$Type', '$Zone', '$Town', '$price', '$Date', '$Discount',$this->pref_r_id)"));
             print mysql_error();
             return $result;
         }
         public function insert_pref_vac($user_id, $Zone, $Country, $Town, $Class, $Name_hotel, $Name_flight, $Date_s, $Date_e, $price, $Discount) {
-            $result = (mysql_query("INSERT INTO pref_v(ID,Zone, Country, Town, Class, Name_hotel, Name_flight, Date_s, Date_e, price, Discount) 
-                                    VALUES($user_id, '$Zone', '$Country', '$Town', '$Class', '$Name_hotel', '$Name_flight', '$Date_s', '$Date_e', '$price', '$Discount')"));
+            $result = (mysql_query("INSERT INTO pref_v(Customer_ID,Zone, Country, Town, Class, Name_hotel, Name_flight, Date_s, Date_e, price, Discount,ID) 
+                                    VALUES($user_id, '$Zone', '$Country', '$Town', '$Class', '$Name_hotel', '$Name_flight', '$Date_s', '$Date_e', '$price', '$Discount',$this->pref_v_id)"));
             print mysql_error();
             return $result;
         }
@@ -220,8 +227,8 @@ some more functions for the compare were added.
             }
         }
 
-        private function Get_Last_id(){
-            $result = (mysql_query('select ID from customers ORDER BY ID DESC LIMIT 1'));
+        private function Get_Last_id($table){
+            $result = (mysql_query("select ID from $table ORDER BY ID DESC LIMIT 1"));
             $Last_ID = mysql_fetch_assoc ($result);
             return ($Last_ID[ID]);
         }
