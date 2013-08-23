@@ -1,0 +1,31 @@
+Groupon
+Link:http://www.groupon.co.il/all-deals/tel-aviv-iw
+City:'/onclick="window.location.href = \'(.*?)\'/'
+CityReplace:True
+ToReplace:'/deals/'
+ReplaceWith:'all-deals'
+InsideLink:True
+RelativeInnerLink:'/"dealPermaLink":"(.*?)"/'
+TheInnerLink:"http://www.groupon.co.il
+IsCategoryPatternNedded:True
+Category:'/"category":"(.*?)"/'
+Name:'/<meta name="keywords" content="(.*?)"/'
+Price:'/"noWrap">([\\d,]*)/'
+Discount:'/"savings2_values">([\\d]*)/'
+Place:'/cityName">(.*?)</'
+Date:'/jcurrentTimeLeft" value="([\\d]*)"/'
+DateInMiliSec:True
+EndOfSite
+Buy2
+Link:http://www.buy2.co.il/c/%D7%90%D7%95%D7%9B%D7%9C-%D7%9E%D7%A1%D7%A2%D7%93%D7%95%D7%AA-%D7%91%D7%AA%D7%99-%D7%A7%D7%A4%D7%94/%D7%9E%D7%A1%D7%A2%D7%93%D7%95%D7%AA
+City:'/location.href=\'(.*?)\'/'
+CityReplace:False
+IsCategoryPatternNedded:False
+Name:'/<!--DG_Company_Name_Open-->(.*?)<!--DG_Company_Name_Close-->/'
+Price:'/<span id="DealPrice" style="font-size:36px;">([\\d,]*?)</'
+Discount:'/id="PriceDiscount">([\\d]*)/'
+Place:'/!--DG_Address_Open-->(.*?)<!--DG_Address_Close-->/'
+Date:'/TargetDate = \'(.*?) U/'
+DateInMiliSec:False
+EndOfSite
+etc.

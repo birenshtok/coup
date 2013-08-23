@@ -1,0 +1,24 @@
+Groupon - Site name.
+Link: The link to the site.
+City - The pattern to give you each city to work with.
+CityReplace - If this flag is true, it is needed to change something in the city you got. (just like groupon).
+ToReplace - This will appear only if the CityReplace flag is true. The pattern to be replaced.
+ReplaceWith - This will appear only if the CityReplace flag is true. The pattenr to replace with.
+InsideLink - If this flag is true, than there is an inner link for each coupon in the page you are looking at (just like groupon).
+RelativeInnerLink: This will appear only if the InsideLink flag is true. Will give you the right pattern to catch the innerlink
+TheInnerLink: This will appear only if the InsideLink flag is true. Tha last pattern gave you only the relative path so you need to append this (TheInnerLink) with the Link you got befor.
+(if this part is not clear look at the Groupon file code in webmatrix and see the code that devide the links to send to the insert_coupon file).
+IsCategoryPatternNedded - if this flag is true so you need a pattern to get the category otherwise the category is Restaurant.
+Category - This will appear only if the IsCategoryPatternNedded  flag is true. The pattern to the category.
+
+(from now on all the information you will get from the innerlink and not from the original URL, like the insert_coupon)
+Name - The pattern to the name.
+Price - The pattern to the price.
+Discount - The pattern to the discount
+Place - The pattern to the place
+Date - The pattern to the date
+DateInMiliSec - this flag will tell you if the date you got is in milisec (like groupon) or not.
+EndOfSite - when you got this you done with this site and the next lines will be for another site.
+
+
+For now you got two sites: Groupon that is working and Buy2 that is not 100% working. 
