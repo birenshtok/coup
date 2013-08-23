@@ -23,32 +23,21 @@ add the secure function check
 -->
 
 <?php
-    include "mysql_connector.php";
-    include "secure.php";
+    require "mysql_connector.php";
+    require "secure.php";
     session_start();    
-?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Validate_user</title>
-    </head>
-    <body>
-        <?php
-            //validate the user
+    //validate the user
             
-            $Data_Base = new mysql_connector();
-            $user_name = secure($_REQUEST['user_name']);
-            $password = secure($_REQUEST['password']);
-            $result = $Data_Base->validate_user($user_name,$password);
-            $check = $Data_Base->Get_Next_Row($result);
-            if (!$check) {
-                    //header("Location: welcom.php")
-                    print($user_name);
-            } else {
-                $_SESSION['UserIdNum']=$check[ID];
-                header("Location: Preferences\preferences.php");
-            }
-        ?>
-    </body>
-</html>
+    $Data_Base = new mysql_connector();
+    $user_name = secure($_REQUEST['user_name']);
+    $password = secure($_REQUEST['password']);
+    $result = $Data_Base->validate_user($user_name, $password);
+    $check = $Data_Base->Get_Next_Row($result);
+    if (!$check) {
+        //header("Location: welcom.php")
+        print($user_name);
+    } else {
+        $_SESSION['UserIdNum']=$check[ID];
+        header("Location: Preferences\preferences.php");
+    }
+?>
