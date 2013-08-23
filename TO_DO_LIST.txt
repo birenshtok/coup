@@ -3,7 +3,7 @@ SET PASSWORD FOR 'root'@'localhost' = PASSWORD('55749');
 To do list:
 1. Sent the mail with all the needed info.
 2. Reorganized mysql_connector(more class).
-3. To check if the users fill all the required boxes.
+- FIXED - 3. To check if the users fill all the required boxes.
 4. Make an UPER_CASE.
 - FIXED - 5. Fix the problem with insert a pref right after register.
 - FIXED - 6.Add a real ID column to the pref tables for each pref.
