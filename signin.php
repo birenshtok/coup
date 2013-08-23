@@ -20,7 +20,7 @@ change the method to post.
                 var un = document.getElementById("un").value;
                 var ps = document.getElementById("ps").value;
                 if (un && ps) {
-                    location = "Validate_User.php";
+                    location = "Validate_User.php?user_name=" + un +  "&" + "password=" + ps;
                 } else if (!un) {
                     var newHTML = "<font color=#FF0000> <B> The User Name is empty! Please type again </B> </font>";
                     document.getElementById('try again').innerHTML = newHTML;
@@ -35,13 +35,11 @@ change the method to post.
         <div id="try again"></div>
     </head>
     <body id="body">
-            <form method="post" action="Validate_User.php" id="main body">
             <label>name: </label>
             <input id="un" type='text' name='user_name' autofocus="true"/>
             <label>password: </label>
             <input id="ps" type ='password' name ='password'/>
-            <button type="submit" onclick="valid_param()">Get in</button>
-            </form>
+            <input type="button" onclick="valid_param()" value="Get in!"/>
     </body>
 </html>
 
