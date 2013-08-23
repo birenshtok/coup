@@ -9,7 +9,7 @@
         $pattern_Link = '/location.href=\'(.*?)\'/';
         preg_match_all($pattern_Link, $text, $matches_Link);     
         
-        //separate each city into a different link.
+        //separate each coupon into a different link.
         foreach ($matches_Link[1] as $Link) {
             $handle_Zone = fopen($Link, "r"); // Open the link.
             insert_coup_buy2 ($Link,"Restaurant");
