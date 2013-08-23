@@ -40,18 +40,13 @@ add the secure function check
             $Data_Base = new mysql_connector();
             $user_name = secure($_REQUEST['user_name']);
             $password = secure($_REQUEST['password']);
-            if ($user_name == NULL || $password == NULL) {
-                print "no!!!!!";
-            } else {
-                $result = $Data_Base->validate_user($user_name,$password);
-                $check = $Data_Base->Get_Next_Row($result);
-                if (!$check) {
-                    print "Please register first";
+            $result = $Data_Base->validate_user($user_name,$password);
+            $check = $Data_Base->Get_Next_Row($result);
+            if (!$check) {
                     header("Location: welcom.php");
-                } else {
-                     $_SESSION['UserIdNum']=$check[ID];
-                     header("Location: Preferences\preferences.php");
-                }
+            } else {
+                $_SESSION['UserIdNum']=$check[ID];
+                header("Location: Preferences\preferences.php");
             }
         ?>
     </body>
