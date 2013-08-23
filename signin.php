@@ -35,13 +35,13 @@ change the method to post.
         <div id="try again"></div>
     </head>
     <body id="body">
-        <p id="main body">
+            <form method="post" action="Validate_User.php" id="main body">
             <label>name: </label>
             <input id="un" type='text' name='user_name' autofocus="true"/>
             <label>password: </label>
             <input id="ps" type ='password' name ='password'/>
-            <input type="button" onclick="valid_param()" value="Get in!"/>
-        </p>
+            <button type="submit" onclick="valid_param()">Get in</button>
+            </form>
     </body>
 </html>
 

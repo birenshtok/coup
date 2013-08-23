@@ -43,7 +43,8 @@ add the secure function check
             $result = $Data_Base->validate_user($user_name,$password);
             $check = $Data_Base->Get_Next_Row($result);
             if (!$check) {
-                    header("Location: welcom.php");
+                    //header("Location: welcom.php")
+                    print($user_name);
             } else {
                 $_SESSION['UserIdNum']=$check[ID];
                 header("Location: Preferences\preferences.php");
