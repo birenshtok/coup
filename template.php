@@ -1,5 +1,13 @@
+<!--
+   25/08/13 this is the class that will get the patterns, from the templete text.
+            if you want to get the first site then call the constrctor with 0,
+            second site 1, sered site 2...
+   **shye 1 
+--!>
+    
 <?php
     
+
 class template{
         private $SiteName;
         private $pattern_Link;
