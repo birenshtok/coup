@@ -28,8 +28,7 @@ class template{
         private $pattern_DateInMiliSec;
  
         function template ($num){
-            print 2;
-                $handle = fopen("C:\\Users\\user\\Documents\\GitHub\\coup\\template.txt", "r");
+                $handle = fopen("template.txt", "r");
 
                 while ($num>0)
                 {
@@ -158,6 +157,9 @@ class template{
             $this->pattern_DateInMiliSec = $DateInMiliSec;
         }
 
+        public function set_Site_Name ($Site_Name) {
+            $this->Site_Name = $Site_Name;
+        }
         public function set_pattern_link ($link) {
             $this->pattern_Link = $link;
         }
@@ -179,10 +181,37 @@ class template{
         public function set_pattern_Last_date_to_buy ($Last_date_to_buy) {
             $this->pattern_Last_date_to_buy = $Last_date_to_buy;
         }
+        public function set_pattern_CityReplace ($CityReplace) {
+            $this->pattern_CityReplace = $CityReplace;
+        }
+        public function set_pattern_ToReplace ($ToReplace) {
+            $this->pattern_ToReplace = $ToReplace;
+        }
+        public function set_pattern_ReplaceWith ($ReplaceWith) {
+            $this->pattern_ReplaceWith = $ReplaceWith;
+        }
+        public function set_pattern_InsideLink ($InsideLink) {
+            $this->pattern_InsideLink = $InsideLink;
+        }
+        public function set_pattern_RelativeInnerLink ($RelativeInnerLink) {
+            $this->pattern_RelativeInnerLink = $RelativeInnerLink;
+        }
+        public function set_pattern_TheInnerLink ($TheInnerLink) {
+            $this->pattern_TheInnerLink = $TheInnerLink;
+        }
+        public function set_pattern_IsCategoryPatternNedded ($IsCategoryPatternNedded) {
+            $this->pattern_IsCategoryPatternNedded = $IsCategoryPatternNedded;
+        }
+        public function set_pattern_DateInMiliSec ($DateInMiliSec) {
+            $this->pattern_Last_DateInMiliSec = $DateInMiliSec;
+        }
 
 
 
 
+        public function get_Site_Name () {
+            return $this->Site_Name;
+        }
         public function get_pattern_Link () {
             return $this->pattern_Link;
         }
@@ -204,17 +233,30 @@ class template{
         public function get_pattern_Last_date_to_buy () {
             return $this->pattern_Last_date_to_buy;
         }
+        public function get_pattern_CityReplace () {
+            return $this->pattern_CityReplace;
+        }
+        public function get_pattern_ToReplace () {
+            return $this->pattern_ToReplace;
+        }
+        public function get_pattern_ReplaceWith () {
+            return $this->pattern_ReplaceWith;
+        }
+        public function get_pattern_InsideLink () {
+            return $this->pattern_InsideLink;
+        }
+        public function get_pattern_RelativeInnerLink () {
+            return $this->pattern_RelativeInnerLink;
+        }
+        public function get_pattern_TheInnerLink () {
+            return $this->pattern_TheInnerLink;
+        }
+        public function get_pattern_IsCategoryPatternNedded () {
+            return $this->pattern_IsCategoryPatternNedded;
+        }
+        public function get_pattern_DateInMiliSec () {
+            return $this->pattern_DateInMiliSec;
+        }
 }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-    </head>
-    <body>
-        
-    </body>
-</html>
