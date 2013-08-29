@@ -1,5 +1,6 @@
 Groupon - Site name.
 Link: The link to the site.
+HasCities - If this flag is true, there is need to seperate links by cities.
 City - The pattern to give you each city to work with.
 CityReplace - If this flag is true, it is needed to change something in the city you got. (just like groupon).
 ToReplace - This will appear only if the CityReplace flag is true. The pattern to be replaced.

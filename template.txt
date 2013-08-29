@@ -1,5 +1,6 @@
 Groupon
 Link:http://www.groupon.co.il/all-deals/tel-aviv-iw
+HasCities:True
 City:'/onclick="window.location.href = \'(.*?)\'/'
 CityReplace:True
 ToReplace:'/deals/'

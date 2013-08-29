@@ -11,6 +11,7 @@
 class template{
         private $SiteName;
         private $pattern_Link;
+        private $HasCities;
         private $pattern_City;
         private $pattern_Name;
         private $pattern_Category;
@@ -58,6 +59,11 @@ class template{
             $pattern = '/Link:(.*)/';
             preg_match_all($pattern, $text, $matches);
             $Link = $matches[1];
+
+            $text = fgets($handle);
+            $pattern = '/HasCities:(.*)/';
+            preg_match_all($pattern, $text, $matches);
+            $HasCities =  $matches[1];
 
             $text = fgets($handle);
             $pattern = '/City:(.*)/';
@@ -134,14 +140,15 @@ class template{
             preg_match_all($pattern, $text, $matches);
             $DateInMiliSec =  $matches[1];
                     
-            $this->insret_patterns($name_site,$Link,$Name,$Category,$Discount,$Price,$Place,$Date,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec);
+            $this->insret_patterns($name_site,$HasCities,$City,$Link,$Name,$Category,$Discount,$Price,$Place,$Date,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec);
         }
 
         
-        public function insret_patterns($Site_Name,$link,$name,$category,$discount,$price,$place,$last_date_to_buy,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec) {
+        public function insret_patterns($Site_Name,$HasCities,$City,$link,$name,$category,$discount,$price,$place,$last_date_to_buy,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec) {
             $this->SiteName = $Site_Name;
             $this->pattern_Link = $link;
             $this->pattern_Name = $name;
+            $this->HasCities = $HasCities;
             $this->pattern_Category = $category;
             $this->pattern_Discount = $discount;
             $this->pattern_Price = $price;
@@ -165,6 +172,9 @@ class template{
         }
         public function set_pattern_name ($name) {
             $this->pattern_Name = $name;
+        }
+        public function set_HasCities ($HasCities) {
+            $this->HasCities = $HasCities;
         }
         public function set_pattern_Category ($Category) {
             $this->pattern_Category = $Category;
@@ -220,6 +230,9 @@ class template{
         }
         public function get_pattern_Category () {
             return $this->pattern_Category;
+        }
+        public function get_HasCities () {
+            return $this->HasCities;
         }
         public function get_pattern_discount () {
             return $this->pattern_Discount;
