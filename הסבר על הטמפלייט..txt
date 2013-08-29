@@ -11,6 +11,7 @@ TheInnerLink: This will appear only if the InsideLink flag is true. Tha last pat
 (if this part is not clear look at the Groupon file code in webmatrix and see the code that devide the links to send to the insert_coupon file).
 IsCategoryPatternNedded - if this flag is true so you need a pattern to get the category otherwise the category is Restaurant.
 Category - This will appear only if the IsCategoryPatternNedded  flag is true. The pattern to the category.
+CategoryName - The name of the Category in this site.
 
 (from now on all the information you will get from the innerlink and not from the original URL, like the insert_coupon)
 Name - The pattern to the name.

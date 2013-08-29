@@ -15,18 +15,19 @@ class template{
         private $pattern_City;
         private $pattern_Name;
         private $pattern_Category;
+        private $CategoryName;
         private $pattern_Discount;
         private $pattern_Price;
         private $pattern_Place;
         private $pattern_Last_date_to_buy;
-        private $pattern_CityReplace;
+        private $CityReplace;
         private $pattern_ToReplace;
         private $pattern_ReplaceWith;
-        private $pattern_InsideLink;
+        private $InsideLink;
         private $pattern_RelativeInnerLink;
         private $pattern_TheInnerLink;
         private $pattern_IsCategoryPatternNedded;
-        private $pattern_DateInMiliSec;
+        private $DateInMiliSec;
  
         function template ($num){
                 $handle = fopen("template.txt", "r");
@@ -111,6 +112,11 @@ class template{
             $Category =  $matches[1];
 
             $text = fgets($handle);
+            $pattern = '/CategoryName:(.*)/';
+            preg_match_all($pattern, $text, $matches);
+            $CategoryName =  $matches[1];
+
+            $text = fgets($handle);
             $pattern = '/Name:(.*)/';
             preg_match_all($pattern, $text, $matches);
             $Name =  $matches[1];
@@ -140,28 +146,30 @@ class template{
             preg_match_all($pattern, $text, $matches);
             $DateInMiliSec =  $matches[1];
                     
-            $this->insret_patterns($name_site,$HasCities,$City,$Link,$Name,$Category,$Discount,$Price,$Place,$Date,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec);
+            $this->insret_patterns($name_site,$HasCities,$City,$Link,$Name,$Category,$CategoryName,$Discount,$Price,$Place,$Date,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec);
         }
 
         
-        public function insret_patterns($Site_Name,$HasCities,$City,$link,$name,$category,$discount,$price,$place,$last_date_to_buy,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec) {
+        public function insret_patterns($Site_Name,$HasCities,$City,$link,$name,$category,$CategoryName,$discount,$price,$place,$last_date_to_buy,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec) {
             $this->SiteName = $Site_Name;
             $this->pattern_Link = $link;
             $this->pattern_Name = $name;
             $this->HasCities = $HasCities;
+            $this->pattern_City = $City;
             $this->pattern_Category = $category;
+            $this->CategoryName = $CategoryName;
             $this->pattern_Discount = $discount;
             $this->pattern_Price = $price;
             $this->pattern_Place = $place;
             $this->pattern_Last_date_to_buy = $last_date_to_buy;
-            $this->pattern_CityReplace = $CityReplace;
+            $this->CityReplace = $CityReplace;
             $this->pattern_ToReplace = $ToReplace;
             $this->pattern_ReplaceWith = $ReplaceWith;
-            $this->pattern_InsideLink = $InsideLink;
+            $this->InsideLink = $InsideLink;
             $this->pattern_RelativeInnerLink = $RelativeInnerLink;
             $this->pattern_TheInnerLink = $TheInnerLink;
             $this->pattern_IsCategoryPatternNedded = $IsCategoryPatternNedded;
-            $this->pattern_DateInMiliSec = $DateInMiliSec;
+            $this->DateInMiliSec = $DateInMiliSec;
         }
 
         public function set_Site_Name ($Site_Name) {
@@ -176,8 +184,14 @@ class template{
         public function set_HasCities ($HasCities) {
             $this->HasCities = $HasCities;
         }
+        public function set_pattern_City ($City) {
+            $this->pattern_City = $City;
+        }
         public function set_pattern_Category ($Category) {
             $this->pattern_Category = $Category;
+        }
+        public function set_CategoryName ($CategoryName) {
+            $this->CategoryName = $CategoryName;
         }
         public function set_pattern_discount ($discount) {
             $this->pattern_Discount = $discount;
@@ -191,8 +205,8 @@ class template{
         public function set_pattern_Last_date_to_buy ($Last_date_to_buy) {
             $this->pattern_Last_date_to_buy = $Last_date_to_buy;
         }
-        public function set_pattern_CityReplace ($CityReplace) {
-            $this->pattern_CityReplace = $CityReplace;
+        public function set_CityReplace ($CityReplace) {
+            $this->CityReplace = $CityReplace;
         }
         public function set_pattern_ToReplace ($ToReplace) {
             $this->pattern_ToReplace = $ToReplace;
@@ -200,8 +214,8 @@ class template{
         public function set_pattern_ReplaceWith ($ReplaceWith) {
             $this->pattern_ReplaceWith = $ReplaceWith;
         }
-        public function set_pattern_InsideLink ($InsideLink) {
-            $this->pattern_InsideLink = $InsideLink;
+        public function set_InsideLink ($InsideLink) {
+            $this->InsideLink = $InsideLink;
         }
         public function set_pattern_RelativeInnerLink ($RelativeInnerLink) {
             $this->pattern_RelativeInnerLink = $RelativeInnerLink;
@@ -212,8 +226,8 @@ class template{
         public function set_pattern_IsCategoryPatternNedded ($IsCategoryPatternNedded) {
             $this->pattern_IsCategoryPatternNedded = $IsCategoryPatternNedded;
         }
-        public function set_pattern_DateInMiliSec ($DateInMiliSec) {
-            $this->pattern_Last_DateInMiliSec = $DateInMiliSec;
+        public function set_DateInMiliSec ($DateInMiliSec) {
+            $this->DateInMiliSec = $DateInMiliSec;
         }
 
 
@@ -231,8 +245,14 @@ class template{
         public function get_pattern_Category () {
             return $this->pattern_Category;
         }
+        public function get_CategoryName () {
+            return $this->CategoryName;
+        }
         public function get_HasCities () {
             return $this->HasCities;
+        }
+        public function get_pattern_City () {
+            return $this->pattern_City;
         }
         public function get_pattern_discount () {
             return $this->pattern_Discount;
@@ -246,8 +266,8 @@ class template{
         public function get_pattern_Last_date_to_buy () {
             return $this->pattern_Last_date_to_buy;
         }
-        public function get_pattern_CityReplace () {
-            return $this->pattern_CityReplace;
+        public function get_CityReplace () {
+            return $this->CityReplace;
         }
         public function get_pattern_ToReplace () {
             return $this->pattern_ToReplace;
@@ -255,8 +275,8 @@ class template{
         public function get_pattern_ReplaceWith () {
             return $this->pattern_ReplaceWith;
         }
-        public function get_pattern_InsideLink () {
-            return $this->pattern_InsideLink;
+        public function get_InsideLink () {
+            return $this->InsideLink;
         }
         public function get_pattern_RelativeInnerLink () {
             return $this->pattern_RelativeInnerLink;
@@ -267,8 +287,8 @@ class template{
         public function get_pattern_IsCategoryPatternNedded () {
             return $this->pattern_IsCategoryPatternNedded;
         }
-        public function get_pattern_DateInMiliSec () {
-            return $this->pattern_DateInMiliSec;
+        public function get_DateInMiliSec () {
+            return $this->DateInMiliSec;
         }
 }
 
