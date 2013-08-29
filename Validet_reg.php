@@ -24,9 +24,9 @@ add the secure function check and the validation of the mail (just check the cha
 -->
 
 <?php
-    include "ValidateMail.php";
-    include "mysql_connector.php";
-    include "secure.php";
+    require "ValidateMail.php";
+    require "mysql_connector.php";
+    require "secure.php";
     session_start();
 ?>
 <!DOCTYPE html>

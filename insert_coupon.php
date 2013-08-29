@@ -1,7 +1,7 @@
 <?php
     
     
-    include_once "mysql_connector.php";
+    require "mysql_connector.php";
     
     $site = new Site();
 

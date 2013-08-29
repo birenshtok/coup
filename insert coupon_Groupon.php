@@ -1,7 +1,7 @@
 <?php
     
     
-    include_once "mysql_connector.php";
+    require "mysql_connector.php";
     
     function insert_coup($url,$category){
         $data_base = new mysql_connector();

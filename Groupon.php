@@ -1,6 +1,6 @@
 <?php
-    include "mysql_connector.php";
-    include "insert coupon_Groupon.php";
+    require "mysql_connector.php";
+    require "insert coupon_Groupon.php";
     $handle = fopen("http://www.groupon.co.il/all-deals/tel-aviv-iw", "r");
     
     //Goes over all the cities in Groupon.

@@ -1,6 +1,6 @@
 <?php   
-    include "mysql_connector.php";
-    include "insert coupon.php";
+    require "mysql_connector.php";
+    require "insert coupon.php";
     
     $site = new template(0);
 

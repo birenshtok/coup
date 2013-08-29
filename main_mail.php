@@ -3,7 +3,7 @@
     $links = $_SESSION['links'];
     print_r ($links);
  
-require_once 'class.phpmailer.php'; // מיקום קובץ המחלקה
+require 'class.phpmailer.php'; // מיקום קובץ המחלקה
  
 $mail = new PHPMailer (); // יצירת אובייקט המחלקה (קריאה למחלקה)
  
