@@ -2,7 +2,7 @@
     include "mysql_connector.php";
     include "insert coupon.php";
     
-    $site = new Site();
+    $site = new template();
 
     $handle = fopen($site::get_site_name(), "r"); // open the first page of the site.
     

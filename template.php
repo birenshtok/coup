@@ -30,7 +30,7 @@ class template{
         function template ($num){
                 $handle = fopen("template.txt", "r");
 
-                while ($num>0)
+                /*while ($num>0)
                 {
                     $check = 1;
                     while ($check == 1)
@@ -44,7 +44,7 @@ class template{
                         print $num;
                     }
                     $num = $num-1;
-                } 
+                } */
                 $this->Read_Next_Site($handle);
         }
        
