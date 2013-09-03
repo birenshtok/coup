@@ -212,12 +212,15 @@ according to the new my_phpmailer class, there is no need to declear the mail se
         for ($i=0; $i<count($Links_arr)-1; $i++){
             $result = $data_base->Get_coup_res($Links_arr[$i]);
             $row = $data_base->Get_Next_Row($result);
-            $links = $links.'<br/>'."place: ".$row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'."Link: ".$Links_arr[$i].'<br>';
+            $result_mail_id = $data_base->Get_mail_link($Links_arr[$i], $user_id);
+            $temp_row = $data_base->Get_Next_Row($result_mail_id);
+            $result_pref = $data_base->Get_pref_res_by_id($temp_row['ID']);
+            $pref_row = $data_base->Get_Next_Row($result_pref);
+            if (!$pref_row['Name'])
+                $links = $links.'<br/>'."place: ".$row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'."Price: ".$row['Price'].'<br>'."Link: ".$Links_arr[$i].'<br>';
+            else
+                $links = $links.'<br/>'."place: ".$pref_row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'."Price: ".$row['Price'].'<br>'."Link: ".$Links_arr[$i].'<br>';
         }
-        /*
-        $links = implode("place: ".$row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'.$links,$Links_arr);
-                       // $links ="place: ".$row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'.$links;
-        */
         $data_base->insert_id_link($user_id,$links);
         $Links_arr = array();
     }

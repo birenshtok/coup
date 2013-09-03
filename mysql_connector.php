@@ -163,6 +163,12 @@ some more functions for the compare were added.
             return $result;
         }
 
+        public function Get_pref_res_by_id($id){
+            $result = (mysql_query("SELECT * FROM pref_r where ID like '$id'"));
+            print mysql_error();
+            return $result;
+        }
+
         public function Get_coup_res($links){
             $result = (mysql_query("SELECT * FROM coup_res where Link like '$links'"));
             print mysql_error();
