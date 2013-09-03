@@ -24,6 +24,14 @@
                     //Do the regular open_url.php mechanism.
                     while (!feof($handle_Zone)) {
                         $text = fgets($handle_Zone);
+
+
+
+
+
+
+
+
                         preg_match_all($site->get_pattern_RelativeInnerLink(), $text, $matches_Link); // get the relative link.
 
                         if($site->get_pattern_IsCategoryPatternNedded()) { // check if needed to get the category.

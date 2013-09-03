@@ -1,6 +1,6 @@
 <?php
     /*כמובן שצריך להגדיר את המקור שבו יושבת המחלקה   */
-    require "template.php";
+    require_once "template.php";
     /*  מקבל את המחרוזת שמתארת את האובייקט ששמרנו $s*/
     $s=implode("",@file("Example.txt"));
     /* יוצר את האובייקט מחדש מהמחרוזת */

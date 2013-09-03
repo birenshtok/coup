@@ -209,7 +209,15 @@ according to the new my_phpmailer class, there is no need to declear the mail se
     }
     if ($Links_arr) {
         $Links_arr[] = " "; 
-        $links = implode("<br/><br/>Link:<br/>",$Links_arr);
+        for ($i=0; $i<count($Links_arr)-1; $i++){
+            $result = $data_base->Get_coup_res($Links_arr[$i]);
+            $row = $data_base->Get_Next_Row($result);
+            $links = $links.'<br/>'."place: ".$row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'."Link: ".$Links_arr[$i].'<br>';
+        }
+        /*
+        $links = implode("place: ".$row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'.$links,$Links_arr);
+                       // $links ="place: ".$row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'.$links;
+        */
         $data_base->insert_id_link($user_id,$links);
         $Links_arr = array();
     }
