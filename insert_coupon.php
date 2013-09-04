@@ -15,13 +15,19 @@
         $handle = fopen($url, "r");
         while (!feof($handle)){
             $text = fgets($handle);
-            $discount_pattern = $site->get_discount();
-            $price_pattern = $site->get_price(); //the pattern to find the price take in calc that the price may be more than 3 digits.
-            $place_pattern = $site->get_place();
-            $name_pattern = $site->get_name();
-            $Last_date_to_buy_pattern = $site->get_date();
+            $discount_pattern = $site->get_pattern_discount();
+            $price_pattern = $site->get_pattern_price(); //the pattern to find the price take in calc that the price may be more than 3 digits.
+            $place_pattern = $site->get_pattern_place();
+            $name_pattern = $site->get_pattern_name();
+            $Last_date_to_buy_pattern = $site->get_pattern_Last_date_to_buy();
             if (!$price_flag) {
                 if(preg_match($price_pattern, $text, $matches)) {
+                    print("</br>");
+                    print($matches[0]);
+                    print("</br>");
+                    print($matches[1]);
+                    print("</br>");
+                    print_r($matches);
                     $price = $matches[1];
                     print ("<BR> Price: $price");
                     $price_flag = 1;
@@ -53,7 +59,7 @@
                 if(preg_match($Last_date_to_buy_pattern, $text, $matches)) {
                     $Last_date_to_buy = $matches[1];
                     
-                    if  ($site->isDateInMiliSec()) {
+                    if  ($site->get_DateInMiliSec()) {
                         $today = time(); // today's date in sec.
                     
                         $last_chance = $today + ($Last_date_to_buy / 1000); // last time to buy the coupon in sec from 1970.
@@ -77,7 +83,7 @@
         print ("<BR> Category: $category");
         fclose($handle);
 
-        /*$compare_link_pattern = '/(.*?)-[cC][\\d]/';
+        $compare_link_pattern = '/(.*?)-[cC][\\d]/';
         if(preg_match($compare_link_pattern, $url, $matches)) {
                     $link = $matches[1];
                     print ("<BR> link: $link");
@@ -93,6 +99,6 @@
             $Zone = "NULL";
             //insert the coupon to the DB.
             $data_base->insert_coupon_restaurants($name, $Type, $Zone, $place, $price, $Last_date_to_buy, $discount, $url);
-        }*/
+        }
     }    
 ?>

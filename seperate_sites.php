@@ -23,12 +23,10 @@
         //Goes over all the cities in the site.
         while (!feof($handle)) {
             $text = fgets($handle);
-            print ((trim($site->get_pattern_City(), "\r\n")));
-            preg_match_all(trim($site->get_pattern_City(), "\r\n"), $text, $matches_Link);         
-            print_r($matches_Link[1]);
+            preg_match_all($site->get_pattern_City(), $text, $matches_Link);
+            
             //separate each city into a different link.
-            foreach ($matches_Link[1] as $Link) {
-                            
+            foreach ($matches_Link[1] as $Link) {                           
                 if($site->get_CityReplace()) {  // the city need replace.
                     $Link = preg_replace($site->get_pattern_ToReplace(),$site->get_pattern_ReplaceWith(),$Link); // make it a valid link by changing the right word.
                     $handle_Zone = fopen($Link, "r"); // Open the link.
@@ -47,17 +45,18 @@
                             $category = "Restaurant"; // insert the default category.
                         }
                         foreach ($matches_Link[1] as $Link) { // get over all the links.
+                            $category = $matches_Category[1][$i];                            
                             ++$i;
-
+                            
                             /* do only if this is a restaurant coupon */
                             if ($category == $site->get_CategoryName()) {
                                 $j++;
                                 print("$j. ");
-                                insert_coup ($site->get_pattern_TheInnerLink() + $Link,$category); // send the right link to the insert coup func.
+                                insert_coup ($site->get_pattern_TheInnerLink().$Link,$category); // send the right link to the insert coup func.
                 
                                 print ("<BR><BR>"); // a line between coupons
                 
-                                /*break; // Just for testing a single coupon.*/
+                                break; // for taking one coupon per city.
                             }
                         }
                     }
@@ -88,12 +87,12 @@
                 
                                 print ("<BR><BR>"); // a line between coupons
                 
-                                /*break; // Just for testing a single coupon.*/
+                                /*break; // Just for testing one coupon per city.*/
                             }
                         }
                     }
                     fclose($handle_Zone);
-                }
+                }               
             }
         }
     } else { //there is no link for each city.
@@ -126,9 +125,9 @@
                 
                         
             }
-            /*break; // Just for testing a single coupon.*/
+            /*break; // Just for testing one coupon per city.*/
         }
-            //fclose($handle_Zone);
+            fclose($handle_Zone);
     }
     fclose($handle);
  }

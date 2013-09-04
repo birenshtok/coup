@@ -234,61 +234,61 @@ class sitePattern{
 
 
         public function get_Site_Name () {
-            return $this->Site_Name;
+            return (trim($this->Site_Name));
         }
         public function get_Link () {
-            return $this->Link;
+            return (trim($this->Link));
         }
         public function get_pattern_name () {
-            return $this->pattern_Name;
+            return (trim($this->pattern_Name));
         }
         public function get_pattern_Category () {
-            return $this->pattern_Category;
+            return (trim($this->pattern_Category));
         }
         public function get_CategoryName () {
-            return $this->CategoryName;
+            return (trim($this->CategoryName));
         }
         public function get_HasCities () {
-            return $this->HasCities;
+            return (trim($this->HasCities));
         }
         public function get_pattern_City () {
-            return $this->pattern_City;
+            return (trim($this->pattern_City));
         }
         public function get_pattern_discount () {
-            return $this->pattern_Discount;
+            return (trim($this->pattern_Discount));
         }
         public function get_pattern_price () {
-            return $this->pattern_Price;
+            return (trim($this->pattern_Price));
         }
         public function get_pattern_place () {
-            return $this->pattern_Place;
+            return (trim($this->pattern_Place));
         }
         public function get_pattern_Last_date_to_buy () {
-            return $this->pattern_Last_date_to_buy;
+            return (trim($this->pattern_Last_date_to_buy));
         }
         public function get_CityReplace () {
-            return $this->CityReplace;
+            return (trim($this->CityReplace));
         }
         public function get_pattern_ToReplace () {
-            return $this->pattern_ToReplace;
+            return (trim($this->pattern_ToReplace));
         }
         public function get_pattern_ReplaceWith () {
-            return $this->pattern_ReplaceWith;
+            return (trim($this->pattern_ReplaceWith));
         }
         public function get_InsideLink () {
-            return $this->InsideLink;
+            return (trim($this->InsideLink));
         }
         public function get_pattern_RelativeInnerLink () {
-            return $this->pattern_RelativeInnerLink;
+            return (trim($this->pattern_RelativeInnerLink));
         }
         public function get_pattern_TheInnerLink () {
-            return $this->pattern_TheInnerLink;
+            return (trim($this->pattern_TheInnerLink));
         }
         public function get_pattern_IsCategoryPatternNedded () {
-            return $this->pattern_IsCategoryPatternNedded;
+            return (trim($this->pattern_IsCategoryPatternNedded));
         }
         public function get_DateInMiliSec () {
-            return $this->DateInMiliSec;
+            return (trim($this->DateInMiliSec));
         }
 }
 
