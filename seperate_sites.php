@@ -1,21 +1,35 @@
 <?php   
-    require "mysql_connector.php";
-    require "insert coupon.php";
+ require_once "mysql_connector.php";
+ require_once "insert_coupon.php";
+ require_once "SitesList.php";
+ require_once "sitePattern.php";
     
-    $site = new template(0);
+ $sitesHolder = new SitesList("SitesPaths.txt");
+ $sitesArray = $sitesHolder->getSites();
+ foreach($sitesArray as $site) {   
+    //save the site object.
+    $s = serialize($site);
+    if (file_exists("site_object.txt"))
+        unlink("site_object.txt");
+    $fp=fopen("site_object.txt","w");
+    fputs($fp,$s);
+    fclose($fp);
 
-    $handle = fopen($site->get_Site_Name(), "r"); // open the first page of the site.
+    print($site->get_Link());
     
-    if($site->get_has_cities()) {
+    $handle = fopen($site->get_Link(), "r"); // open the first page of the site.
+    
+    if($site->get_HasCities()) {
         //Goes over all the cities in the site.
         while (!feof($handle)) {
             $text = fgets($handle);
-            preg_match_all($site->get_pattern_City(), $text, $matches_Link);         
-        
-            if($site->get_CityReplace()) { // the city need replace.
-            
-                //separate each city into a different link.
-                foreach ($matches_Link[1] as $Link) {
+            print ((trim($site->get_pattern_City(), "\r\n")));
+            preg_match_all(trim($site->get_pattern_City(), "\r\n"), $text, $matches_Link);         
+            print_r($matches_Link[1]);
+            //separate each city into a different link.
+            foreach ($matches_Link[1] as $Link) {
+                            
+                if($site->get_CityReplace()) {  // the city need replace.
                     $Link = preg_replace($site->get_pattern_ToReplace(),$site->get_pattern_ReplaceWith(),$Link); // make it a valid link by changing the right word.
                     $handle_Zone = fopen($Link, "r"); // Open the link.
                     $i = 0;
@@ -24,14 +38,6 @@
                     //Do the regular open_url.php mechanism.
                     while (!feof($handle_Zone)) {
                         $text = fgets($handle_Zone);
-
-
-
-
-
-
-
-
                         preg_match_all($site->get_pattern_RelativeInnerLink(), $text, $matches_Link); // get the relative link.
 
                         if($site->get_pattern_IsCategoryPatternNedded()) { // check if needed to get the category.
@@ -56,9 +62,7 @@
                         }
                     }
                     fclose($handle_Zone);
-                }
-            } else { // the city doesn't need a replacement.
-                foreach ($matches_Link[1] as $Link) {
+                } else { // the city doesn't need a replacement.
                     $handle_Zone = fopen($Link, "r"); // Open the link.
                     $i = 0;
                     $j = 0;
@@ -124,7 +128,8 @@
             }
             /*break; // Just for testing a single coupon.*/
         }
-            fclose($handle_Zone);
+            //fclose($handle_Zone);
     }
     fclose($handle);
+ }
 ?>

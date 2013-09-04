@@ -1,21 +1,25 @@
 <?php
-    
-    
+        
     require_once "mysql_connector.php";
-    
-    $site = new Site();
+    require_once "sitePattern.php";
+     
 
     function insert_coup($url,$category){
+       
+        
+        //get the object.
+        $s=implode("",@file("site_object.txt"));
+        $site=unserialize($s);
         $data_base = new mysql_connector();
         print("Link: $url");
         $handle = fopen($url, "r");
         while (!feof($handle)){
             $text = fgets($handle);
-            $discount_pattern = $site::get_discount();
-            $price_pattern = $site::get_price(); //the pattern to find the price take in calc that the price may be more than 3 digits.
-            $place_pattern = $site::get_place();
-            $name_pattern = $site::get_name();
-            $Last_date_to_buy_pattern = $site::get_date();
+            $discount_pattern = $site->get_discount();
+            $price_pattern = $site->get_price(); //the pattern to find the price take in calc that the price may be more than 3 digits.
+            $place_pattern = $site->get_place();
+            $name_pattern = $site->get_name();
+            $Last_date_to_buy_pattern = $site->get_date();
             if (!$price_flag) {
                 if(preg_match($price_pattern, $text, $matches)) {
                     $price = $matches[1];
@@ -49,7 +53,7 @@
                 if(preg_match($Last_date_to_buy_pattern, $text, $matches)) {
                     $Last_date_to_buy = $matches[1];
                     
-                    if  ($site::isDateInMiliSec()) {
+                    if  ($site->isDateInMiliSec()) {
                         $today = time(); // today's date in sec.
                     
                         $last_chance = $today + ($Last_date_to_buy / 1000); // last time to buy the coupon in sec from 1970.

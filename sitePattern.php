@@ -8,9 +8,9 @@
 <?php
     
 
-class template{
+class sitePattern{
         private $SiteName;
-        private $pattern_Link;
+        private $Link;
         private $HasCities;
         private $pattern_City;
         private $pattern_Name;
@@ -29,8 +29,8 @@ class template{
         private $pattern_IsCategoryPatternNedded;
         private $DateInMiliSec;
  
-        function template ($num){
-                $handle = fopen("template.txt", "r");
+        function sitePattern ($path){
+                $handle = fopen($path, "r");
 
                 /*while ($num>0)
                 {
@@ -39,7 +39,7 @@ class template{
                     {
                         $text = fgets($handle);
                         $pattern = '/EndOfSite/';
-                        preg_match_all($pattern, $text, $matches);
+                        preg_match($pattern, $text, $matches);
                         print_r ($matches);
                         if ($matches[0][0] == "EndOfSite")
                             $check = 0;
@@ -58,92 +58,92 @@ class template{
    
             $text = fgets($handle);
             $pattern = '/Link:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $Link = $matches[1];
 
             $text = fgets($handle);
             $pattern = '/HasCities:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $HasCities =  $matches[1];
 
             $text = fgets($handle);
             $pattern = '/City:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $City =  $matches[1];
     
             $text = fgets($handle);
             $pattern = '/CityReplace:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $CityReplace =  $matches[1];
     
             $text = fgets($handle);
             $pattern = '/ToReplace:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $ToReplace =  $matches[1];
    
             $text = fgets($handle);
             $pattern = '/ReplaceWith:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $ReplaceWith =  $matches[1];
   
             $text = fgets($handle);
             $pattern = '/InsideLink:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $InsideLink =  $matches[1];
 
             $text = fgets($handle);
             $pattern = '/RelativeInnerLink:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $RelativeInnerLink =  $matches[1];
     
             $text = fgets($handle);
             $pattern = '/TheInnerLink:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $TheInnerLink =  $matches[1];
     
             $text = fgets($handle);
             $pattern = '/IsCategoryPatternNedded:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $IsCategoryPatternNedded =  $matches[1];
     
             $text = fgets($handle);
             $pattern = '/Category:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $Category =  $matches[1];
 
             $text = fgets($handle);
             $pattern = '/CategoryName:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $CategoryName =  $matches[1];
 
             $text = fgets($handle);
             $pattern = '/Name:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $Name =  $matches[1];
 
             $text = fgets($handle);
             $pattern = '/Price:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $Price =  $matches[1];
     
             $text = fgets($handle);
             $pattern = '/Discount:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $Discount =  $matches[1];
 
             $text = fgets($handle);
             $pattern = '/Place:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $Place =  $matches[1];
 
             $text = fgets($handle);
             $pattern = '/Date:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $Date =  $matches[1];
 
             $text = fgets($handle);
             $pattern = '/DateInMiliSec:(.*)/';
-            preg_match_all($pattern, $text, $matches);
+            preg_match($pattern, $text, $matches);
             $DateInMiliSec =  $matches[1];
                     
             $this->insret_patterns($name_site,$HasCities,$City,$Link,$Name,$Category,$CategoryName,$Discount,$Price,$Place,$Date,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec);
@@ -152,7 +152,7 @@ class template{
         
         public function insret_patterns($Site_Name,$HasCities,$City,$link,$name,$category,$CategoryName,$discount,$price,$place,$last_date_to_buy,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec) {
             $this->SiteName = $Site_Name;
-            $this->pattern_Link = $link;
+            $this->Link = $link;
             $this->pattern_Name = $name;
             $this->HasCities = $HasCities;
             $this->pattern_City = $City;
@@ -175,8 +175,8 @@ class template{
         public function set_Site_Name ($Site_Name) {
             $this->Site_Name = $Site_Name;
         }
-        public function set_pattern_link ($link) {
-            $this->pattern_Link = $link;
+        public function set_Link ($link) {
+            $this->Link = $link;
         }
         public function set_pattern_name ($name) {
             $this->pattern_Name = $name;
@@ -236,8 +236,8 @@ class template{
         public function get_Site_Name () {
             return $this->Site_Name;
         }
-        public function get_pattern_Link () {
-            return $this->pattern_Link;
+        public function get_Link () {
+            return $this->Link;
         }
         public function get_pattern_name () {
             return $this->pattern_Name;
