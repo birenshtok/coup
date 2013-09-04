@@ -22,12 +22,6 @@
             $Last_date_to_buy_pattern = $site->get_pattern_Last_date_to_buy();
             if (!$price_flag) {
                 if(preg_match($price_pattern, $text, $matches)) {
-                    print("</br>");
-                    print($matches[0]);
-                    print("</br>");
-                    print($matches[1]);
-                    print("</br>");
-                    print_r($matches);
                     $price = $matches[1];
                     print ("<BR> Price: $price");
                     $price_flag = 1;
