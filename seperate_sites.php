@@ -38,14 +38,13 @@
                         $text = fgets($handle_Zone);
                         preg_match_all($site->get_pattern_RelativeInnerLink(), $text, $matches_Link); // get the relative link.
 
-                        if($site->get_pattern_IsCategoryPatternNedded()) { // check if needed to get the category.
+                        foreach ($matches_Link[1] as $Link) { // get over all the links.
+                            if($site->get_pattern_IsCategoryPatternNedded()) { // check if needed to get the category.
                             preg_match_all($site->get_pattern_Category(), $text, $matches_Category); // get the category.
                             $category = $matches_Category[1][$i]; // insert the category into $category.
                         } else {
                             $category = "Restaurant"; // insert the default category.
-                        }
-                        foreach ($matches_Link[1] as $Link) { // get over all the links.
-                            $category = $matches_Category[1][$i];                            
+                        }                            
                             ++$i;
                             
                             /* do only if this is a restaurant coupon */
