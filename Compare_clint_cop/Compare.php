@@ -209,17 +209,25 @@ according to the new my_phpmailer class, there is no need to declear the mail se
     }
     if ($Links_arr) {
         $Links_arr[] = " "; 
-        for ($i=0; $i<count($Links_arr)-1; $i++){
-            $result = $data_base->Get_coup_res($Links_arr[$i]);
+        $result = $data_base->Get_coup_res($Links_arr[0]);
             $row = $data_base->Get_Next_Row($result);
-            $result_mail_id = $data_base->Get_mail_link($Links_arr[$i], $user_id);
+            $result_mail_id = $data_base->Get_mail_link($Links_arr[0], $user_id);
             $temp_row = $data_base->Get_Next_Row($result_mail_id);
             $result_pref = $data_base->Get_pref_res_by_id($temp_row['ID']);
             $pref_row = $data_base->Get_Next_Row($result_pref);
-            if (!$pref_row['Name'])
-                $links = $links.'<br/>'."place: ".$row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'."Price: ".$row['Price'].'<br>'."Link: ".$Links_arr[$i].'<br>';
-            else
-                $links = $links.'<br/>'."place: ".$pref_row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'."Price: ".$row['Price'].'<br>'."Link: ".$Links_arr[$i].'<br>';
+            /*if (!$pref_row['Name'])
+                $links = $links.'<br/>'."place: ".$row['Name'].'<br/>'."town: ".$row['Town'].'<br/>'."Price: ".$row['Price'].'<br>'."Link: ".$Links_arr[0].'<br>';
+            else*/
+                $links = "the link that maches this requset".'<br/>';
+                if ($pref_row['Name']!=NULL) $links = $links."place: ".$pref_row['Name'].'<br/>';
+                if ($pref_row['Zone']!=NULL) $links = $links."Zone: ".$pref_row['Zone'].'<br/>';
+                if ($pref_row['Town']!=NULL) $links = $links."town: ".$pref_row['Town'].'<br/>';
+                if ($pref_row['Price']!=NULL) $links = $links."Price: ".$pref_row['Price'].'<br>';
+                if ($pref_row['Date']!=NULL) $links = $links."Date: ".$pref_row['Date'].'<br>';
+                if ($pref_row['Discount']!=NULL) $links = $links."Discount: ".$pref_row['Discount'].'<br>';
+                $links = $links."Link: ".$Links_arr[0].'<br>';
+        for ($i=0; $i<count($Links_arr)-1; $i++){
+            $links =$links.'<br>'."Link: ".$Links_arr[0].'<br>';
         }
         $data_base->insert_id_link($user_id,$links);
         $Links_arr = array();
