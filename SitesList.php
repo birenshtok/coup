@@ -13,7 +13,7 @@
             $this->path = $path; 
             $handle = fopen($path,"r");
             while (!feof($handle)) {
-                $text = fgets($handle);
+                $text = trim(fgets($handle));
                 if (!array_key_exists($text, $this->lastModified)){/* if the site dosn't exsit*/
                     $site =  new sitePattern ($text);
                     $this->sites[] = $site;

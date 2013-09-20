@@ -30,23 +30,8 @@ class sitePattern{
         private $DateInMiliSec;
  
         function sitePattern ($path){
-                $handle = fopen($path, "r");
+                $handle = fopen(trim($path), "r");
 
-                /*while ($num>0)
-                {
-                    $check = 1;
-                    while ($check == 1)
-                    {
-                        $text = fgets($handle);
-                        $pattern = '/EndOfSite/';
-                        preg_match($pattern, $text, $matches);
-                        print_r ($matches);
-                        if ($matches[0][0] == "EndOfSite")
-                            $check = 0;
-                        print $num;
-                    }
-                    $num = $num-1;
-                } */
                 $this->Read_Next_Site($handle);
         }
        

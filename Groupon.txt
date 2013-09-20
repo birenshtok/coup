@@ -12,9 +12,9 @@ IsCategoryPatternNedded:True
 Category:/"category":"(.*?)"/
 CategoryName:RESTAURANT1
 Name:/<meta name="keywords" content="(.*?)"/
-Price:/"noWrap">([0-9,]*)/
-Discount:/"savings2_values">([0-9]*)/
+Price:/"noWrap">([\d,]*)/
+Discount:/"savings2_values">([\d]*)/
 Place:/cityName">(.*?)</
-Date:/jcurrentTimeLeft" value="([0-9]*)"/
+Date:/jcurrentTimeLeft" value="([\d]*)"/
 DateInMiliSec:True
 EndOfSite

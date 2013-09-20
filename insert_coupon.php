@@ -53,7 +53,7 @@
                 if(preg_match($Last_date_to_buy_pattern, $text, $matches)) {
                     $Last_date_to_buy = $matches[1];
                     
-                    if  ($site->get_DateInMiliSec()) {
+                    if  ($site->get_DateInMiliSec() == 'True') {
                         $today = time(); // today's date in sec.
                     
                         $last_chance = $today + ($Last_date_to_buy / 1000); // last time to buy the coupon in sec from 1970.
@@ -64,6 +64,7 @@
                         print(date("Y-m-d H:i:s",$last_chance));
                     }else { // date is not in milisec.
                         print ("<BR> Last time to buy: ");
+                        $Last_date_to_buy = date("Y-m-d H:i:s",time());
                         print($Last_date_to_buy);
                     }
                     
@@ -77,7 +78,7 @@
         print ("<BR> Category: $category");
         fclose($handle);
 
-        $compare_link_pattern = '/(.*?)-[cC][\\d]/';
+        /*$compare_link_pattern = '/(.*?)-[cC][\\d]/';
         if(preg_match($compare_link_pattern, $url, $matches)) {
                     $link = $matches[1];
                     print ("<BR> link: $link");
@@ -88,11 +89,11 @@
         print mysql_error();
         $row = $data_base->Get_Next_Row($result);  
         
-        if(!$row) {
+        if(!$row) {*/
             $Type = "NULL";
             $Zone = "NULL";
             //insert the coupon to the DB.
             $data_base->insert_coupon_restaurants($name, $Type, $Zone, $place, $price, $Last_date_to_buy, $discount, $url);
-        }
+        //}
     }    
 ?>
