@@ -20,6 +20,7 @@
             $place_pattern = $site->get_pattern_place();
             $name_pattern = $site->get_pattern_name();
             $Last_date_to_buy_pattern = $site->get_pattern_Last_date_to_buy();
+            $CompareLink_pattern = $site->get_pattern_CompareLink();
             if (!$price_flag) {
                 if(preg_match($price_pattern, $text, $matches)) {
                     $price = $matches[1];
@@ -78,22 +79,23 @@
         print ("<BR> Category: $category");
         fclose($handle);
 
-        /*$compare_link_pattern = '/(.*?)-[cC][\\d]/';
-        if(preg_match($compare_link_pattern, $url, $matches)) {
-                    $link = $matches[1];
+        // get the part of the link that needs to compare
+        if(preg_match($CompareLink_pattern, $url, $matche)) { 
+                    $link = $matche[1];
                     print ("<BR> link: $link");
         }
 
+        //check if we already have this coupon
         $result = (mysql_query("SELECT coup_res.Link FROM coup_res 
                                 WHERE Link LIKE '$link%'"));
         print mysql_error();
         $row = $data_base->Get_Next_Row($result);  
         
-        if(!$row) {*/
+        if(!$row) { // if we don't have this coupon so we insert it to the DB
             $Type = "NULL";
             $Zone = "NULL";
             //insert the coupon to the DB.
             $data_base->insert_coupon_restaurants($name, $Type, $Zone, $place, $price, $Last_date_to_buy, $discount, $url);
-        //}
+        }
     }    
 ?>

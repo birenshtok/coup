@@ -17,4 +17,5 @@ Discount:/"savings2_values">([\d]*)/
 Place:/cityName">(.*?)</
 Date:/jcurrentTimeLeft" value="([\d]*)"/
 DateInMiliSec:True
+CompareLink:/(.*?)-[cC][\d]/
 EndOfSite

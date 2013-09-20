@@ -1,7 +1,5 @@
 <!--
-   25/08/13 this is the class that will get the patterns, from the templete text.
-            if you want to get the first site then call the constrctor with 0,
-            second site 1, sered site 2...
+   25/08/13 this is the class that will get the patterns, from each site pattern text.
    **shye 
 --!>
     
@@ -28,6 +26,7 @@ class sitePattern{
         private $pattern_TheInnerLink;
         private $pattern_IsCategoryPatternNedded;
         private $DateInMiliSec;
+        private $pattern_CompareLink;
  
         function sitePattern ($path){
                 $handle = fopen(trim($path), "r");
@@ -130,12 +129,17 @@ class sitePattern{
             $pattern = '/DateInMiliSec:(.*)/';
             preg_match($pattern, $text, $matches);
             $DateInMiliSec =  $matches[1];
+
+            $text = fgets($handle);
+            $pattern = '/CompareLink:(.*)/';
+            preg_match($pattern, $text, $matches);
+            $CompareLink =  $matches[1];
                     
-            $this->insret_patterns($name_site,$HasCities,$City,$Link,$Name,$Category,$CategoryName,$Discount,$Price,$Place,$Date,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec);
+            $this->insret_patterns($name_site,$HasCities,$City,$Link,$Name,$Category,$CategoryName,$Discount,$Price,$Place,$Date,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec,$CompareLink);
         }
 
         
-        public function insret_patterns($Site_Name,$HasCities,$City,$link,$name,$category,$CategoryName,$discount,$price,$place,$last_date_to_buy,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec) {
+        public function insret_patterns($Site_Name,$HasCities,$City,$link,$name,$category,$CategoryName,$discount,$price,$place,$last_date_to_buy,$CityReplace,$ToReplace,$ReplaceWith,$InsideLink,$RelativeInnerLink,$TheInnerLink,$IsCategoryPatternNedded,$DateInMiliSec,$CompareLink) {
             $this->SiteName = $Site_Name;
             $this->Link = $link;
             $this->pattern_Name = $name;
@@ -155,6 +159,7 @@ class sitePattern{
             $this->pattern_TheInnerLink = $TheInnerLink;
             $this->pattern_IsCategoryPatternNedded = $IsCategoryPatternNedded;
             $this->DateInMiliSec = $DateInMiliSec;
+            $this->pattern_CompareLink = $CompareLink;
         }
 
         public function set_Site_Name ($Site_Name) {
@@ -213,6 +218,9 @@ class sitePattern{
         }
         public function set_DateInMiliSec ($DateInMiliSec) {
             $this->DateInMiliSec = $DateInMiliSec;
+        }
+        public function set_pattern_CompareLink ($CompareLink) {
+            $this->pattern_CompareLink = $CompareLink;
         }
 
 
@@ -274,6 +282,9 @@ class sitePattern{
         }
         public function get_DateInMiliSec () {
             return (trim($this->DateInMiliSec));
+        }
+        public function get_pattern_CompareLink () {
+            return (trim($this->pattern_CompareLink));
         }
 }
 

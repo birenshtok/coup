@@ -17,4 +17,5 @@ Discount:/id="PriceDiscount">([\d]*)/
 Place:/!--DG_Address_Open-->(.*?)<!--DG_Address_Close-->/
 Date:/TargetDate = \'(.*?) U/
 DateInMiliSec:False
+CompareLink:/(.*)/
 EndOfSite

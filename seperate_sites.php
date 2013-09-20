@@ -4,7 +4,7 @@
  require_once "SitesList.php";
  require_once "sitePattern.php";
     
- set_time_limit(1500);
+ set_time_limit(31536000); // This is a year in seconds
  
  $sitesHolder = new SitesList("SitesPaths.txt");
  $sitesArray = $sitesHolder->getSites();
