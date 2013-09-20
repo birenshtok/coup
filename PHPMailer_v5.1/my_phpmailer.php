@@ -5,7 +5,7 @@ This is the my_phpmailer class that extends the phpmailer class, thanks to this 
 
 20/02/13 (the night between the 19 to the 20) - creation date
 
-**itai
+**shye1
 -->
 
 <?php

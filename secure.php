@@ -11,7 +11,7 @@ notify that the creation of the DB connection must be befor the use of this func
 
 19/02/13 - creation date.
 
-**itai
+**shye1
 -->
 
 <?php

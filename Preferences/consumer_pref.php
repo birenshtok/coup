@@ -1,24 +1,3 @@
-<!--
-(C) Copyright 2013, by Intelligent Manufacturing Systems, Inc.
-
-Getting here from preferences.php 
-the page where the customer fiil his preferences
-13/02/13
-**shye
-
-14/02/13
-delete test printing of id.
-change method to post, change reading from $GET array to $REQUEST array
-
-**itai
-
-17/02/13
-change the form of the date to: day,monthe,year.
-
-**itai
--->
-
-
 <?php
     session_start();
 ?>

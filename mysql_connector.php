@@ -16,14 +16,14 @@ add: public function insert_pref_cons line 62
 
 fix insret the requset of the customer to the  consumer table, this method now print the sql error if there was an error.
 
-**itai
+**shye1
 
 17/02/13
 
 make the constractor connect to the DB, insert_res and insert_vec were added.
 some more functions for the compare were added.
 
-**itai
+**shye1
 -->
 
 <?php

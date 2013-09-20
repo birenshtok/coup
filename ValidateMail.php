@@ -5,7 +5,7 @@ the validation of the mail function (just check the chars for now..)
 
 19/02/13 - creation date.
 
-**itai
+**shye1
 -->
 
 <?php 

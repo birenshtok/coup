@@ -1,10 +1,3 @@
-<!--
-the Welcom page.
-
-14/02/13
-**Itai
--->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>

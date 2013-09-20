@@ -4,7 +4,7 @@
 The funcs that take care of null fields.
 
 17/02/13 - creation date.
-**itai
+**shye1
 
 28/02/13
 fixed the date_res_comparable.

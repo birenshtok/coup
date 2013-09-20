@@ -1,15 +1,3 @@
-<!--
-(C) Copyright 1990, 1991 by Intelligent Manufacturing Systems, Inc.
-
-Getting here from index.php
-the page for registration. after the user finished, move him, to the validat_reg.php page.
-
-14/02/13
-change the method to post.
-
-**Itai
--->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>

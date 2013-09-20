@@ -7,13 +7,13 @@ and this page also update the mail_link table.
 
 17/02/13 - creation date.
 
-**itai
+**shye1
 
 20/02/13 (the night between the 19 to the 20)
 
 according to the new my_phpmailer class, there is no need to declear the mail settings each time, only the mail massege atributes.
 
-**itai
+**shye1
 
 28/02/13
 

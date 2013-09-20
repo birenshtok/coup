@@ -1,20 +1,3 @@
-<!--
-(C) Copyright 2013, by Intelligent Manufacturing Systems, Inc.
-
-Getting here from preferences.php 
-the page where the customer fiil his preferences
-
-17/02/13 - creation date.
-**itai
-
-21/02/13
-
-fix the inserts bug.
-
-**itai
-
--->
-
 <?php
     session_start();
 ?>

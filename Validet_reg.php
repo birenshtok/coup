@@ -8,19 +8,19 @@ the page Validate that the user doesn't exist still need to open the right page.
 change the read from the $GET array to the $REQUEST.
 fix the Validate.
 
-**Itai
+**shye1
 
 17/02/13
 
 according to the mysql constractor change no need to connect to the DB from here.
 
-**itai
+**shye1
 
 19/02/13
 
 add the secure function check and the validation of the mail (just check the chars for now..)
 
-**itai
+**shye1
 -->
 
 <?php

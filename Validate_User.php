@@ -7,19 +7,19 @@ the page Validate that the user exist and open the preferences.php page.
 14/02/13
 change the read from the $GET array to the $REQUEST.
 
-**Itai
+**shye1
 
 17/02/13
 
 according to the mysql constractor change no need to connect to the DB from here.
 
-**itai
+**shye1
 
 19/02/13
 
 add the secure function check
 
-**itai
+**shye1
 -->
 
 <?php
