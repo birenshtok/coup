@@ -14,6 +14,8 @@
             $place_pattern = '/!--DG_Address_Open-->(.*?)<!--DG_Address_Close-->/';
             $name_pattern = '/<!--DG_Company_Name_Open-->(.*?)<!--DG_Company_Name_Close-->/';
             $Last_date_to_buy_pattern = '/TargetDate = \'(.*?) U/';
+            $Use_pattern = '/מימוש מיידי ועד ה-([0-9]+\/[0-9]+\/[0-9]+)/';
+
             if (!$price_flag) {
                 if(preg_match($price_pattern, $text, $matches)) {
                     $price = $matches[1];
@@ -42,6 +44,13 @@
                     $name_flag = 1;
                 }
             }
+            if (!$use_flag) {
+                if(preg_match($Use_pattern, $text, $matches)) {
+                    $use = $matches[1];
+                    print ("<BR> Use: $use");
+                    $use_flag = 1;
+                }
+            }
 
             if (!$Last_date_to_buy_flag) {
                 if(preg_match($Last_date_to_buy_pattern, $text, $matches)) {
@@ -60,11 +69,18 @@
                 }
             }
 
-            if ($price_flag && $discount_flag && $place_flag && $name_flag && $buy_time_flag) // for efficiency
+            if ($price_flag && $discount_flag && $place_flag && $name_flag && $buy_time_flag && $use_flag) // for efficiency
                 break;
         }
         print ("<BR> Category: $category");
         fclose($handle);
+        
+        if(!$use_flag) {
+            $use = time() + 2592000;
+            $use = date("d/m/y",$use);
+            print ("<BR> Last time to use: ");
+            print($use);
+        }
 
         /*$compare_link_pattern = '/(.*?)-[cC][\\d]/';
         if(preg_match($compare_link_pattern, $url, $matches)) {
