@@ -35,7 +35,7 @@
                 
                         print ("<BR><BR>"); // a line between coupons
                 
-                        /*break; // Just for testing a single coupon.*/
+                        break; // Just for testing a single coupon.*/
                     }
                 }
             }

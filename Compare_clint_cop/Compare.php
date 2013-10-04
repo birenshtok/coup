@@ -1,41 +1,9 @@
-<!--
-(C) Copyright 2013, by Intelligent Manufacturing Systems, Inc.
-
-This is the page that compares between the tables and send the mails,
-in addition this page make sure that the user won't get the same link again,
-and this page also update the mail_link table.
-
-17/02/13 - creation date.
-
-**shye1
-
-20/02/13 (the night between the 19 to the 20)
-
-according to the new my_phpmailer class, there is no need to declear the mail settings each time, only the mail massege atributes.
-
-**shye1
-
-28/02/13
-
-1.empty $links_arr after $data_base->insert_id_link.
-2.in line 212: while ($row['ID']) insted of while ($row = $data_base->Get_Next_Row($result)) because it skip an id each time.
-!!!stil need to find out why you get more mail's with link's you didn't want !!!!
-
-**shye
-
-03/03/13
-
-1.fixed the problome with the mail. In line 234 ($mail->AddAddress("$user_mail", "shye.itai");) the class (mail) add a new address and when in line 241 (mail->send())
-    it will send an mail to all address. for now at line 233 the object $mail will be constracted agian.
-2.
--->
-
 <?php
+session_start();
     include "..\mysql_connector.php";
     include "..\\valid_field_funcs.php";
     include "..\PHPMailer_v5.1\my_phpmailer.php";
-
-    session_start();
+   
     $data_base = new mysql_connector();
   
   
@@ -248,7 +216,7 @@ according to the new my_phpmailer class, there is no need to declear the mail se
         }
         // the mail massege settings.
         $mail = new my_phpmailer;
-        $mail->AddAddress("$user_mail", "shye.itai");
+        $mail->AddAddress("$user_mail", "$user_mail");
         $mail->Subject = "Your Links";
         $mail->Body    = implode("<br/>",$Links_arr); // Add a line between the sections of links.
         $mail->IsHTML (true);

@@ -1,27 +1,3 @@
-<!--
-(C) Copyright 2013, by Intelligent Manufacturing Systems, Inc.
-
-Getting here from signin.php
-the page Validate that the user exist and open the preferences.php page.
-
-14/02/13
-change the read from the $GET array to the $REQUEST.
-
-**shye1
-
-17/02/13
-
-according to the mysql constractor change no need to connect to the DB from here.
-
-**shye1
-
-19/02/13
-
-add the secure function check
-
-**shye1
--->
-
 <?php
     require "mysql_connector.php";
     require "secure.php";

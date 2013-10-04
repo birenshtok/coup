@@ -13,16 +13,16 @@ This is the my_phpmailer class that extends the phpmailer class, thanks to this 
 
 class my_phpmailer extends phpmailer {
     // Set default variables for all new objects
-    var $From     = "shye.itai.biren@gmail.com";
-    var $FromName = "Coupon4you";
-    var $Host     = "smtp.gmail.com";
+    var $From     = "Admin@coup4me.com";
+    var $FromName = "Coup4Me";
+    var $Host     = "Mail.coup4me.com";
     var $Mailer   = "smtp";                         // Alternative to IsSMTP()
     var $WordWrap = 75;
-    var $Username   = "shye.itai.biren@gmail.com";
-    var $Password   = "shye.itai";
-    var $SMTPAuth   = true; // התחברות לשרת המיילים דורשת הזדהות
-    var $SMTPSecure = "ssl"; // מתחברים בהתחברות מאובטחת
-    var $Port  = 465; // פורט השרת של גוגל
+    var $Username   = "Admin@coup4me.com";
+    var $Password   = "biren";
+    var $SMTPAuth   = true; // ×”×ª×—×‘×¨×•×ª ×œ×©×¨×ª ×”×ž×™×™×œ×™× ×“×•×¨×©×ª ×”×–×“×”×•×ª
+    var $SMTPSecure = "TLS"; // ×ž×ª×—×‘×¨×™× ×‘×”×ª×—×‘×¨×•×ª ×ž××•×‘×˜×—×ª
+    var $Port  = 25; // ×¤×•×¨×˜ ×”×©×¨×ª ×©×œ ×’×•×’×œ
     var $CharSet = 'UTF-8';
 
     // Replace the default error_handler

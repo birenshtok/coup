@@ -14,6 +14,7 @@
             $place_pattern = '/cityName">(.*?)</';
             $name_pattern = '/<meta name="keywords" content="(.*?)"/';
             $Last_date_to_buy_pattern = '/jcurrentTimeLeft" value="([\\d]*)"/';
+            $Use_pattern = '/([\\d]+[.][\\d]+[.][\\d]+)/';
             if (!$price_flag) {
                 if(preg_match($price_pattern, $text, $matches)) {
                     $price = $matches[1];
@@ -42,6 +43,13 @@
                     $name_flag = 1;
                 }
             }
+            if (!$use_flag) {
+                if(preg_match($Use_pattern, $text, $matches)) {
+                    $use = $matches[1];
+                    print ("<BR> Use: $use");
+                    $use_flag = 1;
+                }
+            }
 
             if (!$Last_date_to_buy_flag) {
                 if(preg_match($Last_date_to_buy_pattern, $text, $matches)) {
@@ -60,13 +68,13 @@
                 }
             }
 
-            if ($price_flag && $discount_flag && $place_flag && $name_flag && $buy_time_flag) // for efficiency
+            if ($price_flag && $discount_flag && $place_flag && $name_flag && $buy_time_flag && $use_flag) // for efficiency
                 break;
         }
         print ("<BR> Category: $category");
         fclose($handle);
 
-        $compare_link_pattern = '/(.*?)-[cC][\\d]/';
+        /*$compare_link_pattern = '/(.*?)-[cC][\\d]/';
         if(preg_match($compare_link_pattern, $url, $matches)) {
                     $link = $matches[1];
                     print ("<BR> link: $link");
@@ -82,6 +90,6 @@
             $Zone = "NULL";
             //insert the coupon to the DB.
             $data_base->insert_coupon_restaurants($name, $Type, $Zone, $place, $price, $Last_date_to_buy, $discount, $url);
-        }
+        }*/
     }    
 ?>

@@ -188,7 +188,7 @@ some more functions for the compare were added.
         }
 
         public function Delete_Old_Coup_Res(){
-            (mysql_query("Update Coup_res Set Deleted = 1 Where Last_date_to_buy < now()"));
+            (mysql_query("Update coup_res Set Deleted = 1 Where Last_date_to_buy < now()"));
             print mysql_error();
         }
 
