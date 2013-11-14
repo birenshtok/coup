@@ -54,7 +54,7 @@ some more functions for the compare were added.
             }
 
             $this->user_id = $this->Get_Last_id('customers') + 1; //insert the next id into the id field
-            $this->pref_r_id = $this->Get_Last_id('pref_r') + 1;
+            $this->pref_id = $this->Get_Last_id('pref') + 1;
             $this->pref_c_id = $this->Get_Last_id('pref_c') + 1;
             $this->pref_v_id = $this->Get_Last_id('pref_v') + 1;
         }
@@ -109,13 +109,51 @@ some more functions for the compare were added.
             print mysql_error();
             return $result;
         }
-        public function insert_pref_res($user_id, $name, $Type, $Zone, $Town, $price, $Date, $Discount) {
-            $result = (mysql_query("INSERT INTO pref_r(Customer_ID,Name,Type,Zone,Town,Price,Date,Discount,ID) 
-                                    VALUES($user_id, '$name', '$Type', '$Zone', '$Town', '$price', '$Date', '$Discount',$this->pref_r_id)"));
+
+
+        public function insert_pref($user_id, $name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category) {
+            if($Town == "")
+              $Town = 0;
+            if($MinPrice == "")
+              $MinPrice = 0;
+            if($MaxPrice == "")
+              $MaxPrice = 0;
+            $Public == 1 ? $Public = 1 : $Public = 0 ;
+              
+         
+            if($DateS=='00-00-00')
+                $Date_Start = 0;
+            else{
+              $result1 = mysql_query("select ID from date where '$DateS' = Date");
+		      $row = $this->Get_Next_Row($result1);
+              $Date_Start = $row['ID'] ;
+            }
+
+            if($DateE=='00-00-00')
+                $Date_End = 0;
+            else{
+		      $result2 = mysql_query("SELECT * from date WHERE '$DateE' = Date");
+		      $row = $this->Get_Next_Row($result2);
+              $Date_End = $row['ID'];
+            }
+              if($category == "")
+                $category = 0;
+
+            $today = time(); // today's date in sec.
+            $today = date("Y-m-d",$today);
+            $result2 = mysql_query("SELECT * from date WHERE '$today' = Date");
+		    $row = $this->Get_Next_Row($result2);
+            $today = $row['ID'];
+
+            $result = (mysql_query("INSERT INTO pref(Customer_ID,Name,Town,Price_min,Price_max,Date_start,Date_end,Discount,ID,Category,Public,Date_of_request) 
+                                    VALUES('$user_id', '$name', '$Town', '$MinPrice', '$MaxPrice','$Date_Start','$Date_End',$Discount,$this->pref_id,'$category','$Public','$today')"));
             print mysql_error();
             return $result;
         }
-        public function insert_pref_vac($user_id, $Zone, $Country, $Town, $Class, $Name_hotel, $Name_flight, $Date_s, $Date_e, $price, $Discount) {
+
+
+
+        public function insert_pref_vac($user_id, $Zone, $Country, $Town, $Class, $Name_hotel, $Name_flight, $Date_s, $Date_e, $price, $Discount, $category) {
             $result = (mysql_query("INSERT INTO pref_v(Customer_ID,Zone, Country, Town, Class, Name_hotel, Name_flight, Date_s, Date_e, price, Discount,ID) 
                                     VALUES($user_id, '$Zone', '$Country', '$Town', '$Class', '$Name_hotel', '$Name_flight', '$Date_s', '$Date_e', '$price', '$Discount',$this->pref_v_id)"));
             print mysql_error();

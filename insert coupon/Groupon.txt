@@ -1,0 +1,21 @@
+Groupon
+Link:http://www.groupon.co.il/all-deals/tel-aviv-iw
+HasCities:True
+City:/onclick="window.location.href = \'(.*?)\'/
+CityReplace:True
+ToReplace:/deals/
+ReplaceWith:all-deals
+InsideLink:True
+RelativeInnerLink:/"dealPermaLink":"(.*?)"/
+TheInnerLink:http://www.groupon.co.il
+IsCategoryPatternNedded:True
+Category:/"category":"(.*?)"/
+CategoryName:RESTAURANT1
+Name:/<meta name="keywords" content="(.*?)"/
+Price:/"noWrap">([\d,]*)/
+Discount:/"savings2_values">([\d]*)/
+Place:/cityName">(.*?)</
+Date:/jcurrentTimeLeft" value="([\d]*)"/
+DateInMiliSec:True
+CompareLink:/(.*?)-[cC][\d]/
+EndOfSite

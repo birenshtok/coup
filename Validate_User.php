@@ -11,9 +11,9 @@
     $check = $Data_Base->Get_Next_Row($result);
     if (!$check) {
         //header("Location: welcom.php")
-        print($user_name);
+        print("not a user");
     } else {
         $_SESSION['UserIdNum']=$check[ID];
-        header("Location: Preferences\preferences.php");
+        header("Location: menu.php" /*Preferences\preferences.php*/);
     }
 ?>

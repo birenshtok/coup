@@ -10,16 +10,43 @@
     </head>
     <body>
         <?php 
-            $_SESSION['type']='Vec';
+            $_SESSION['type']='Res';
         ?>
-        <form method="post" action="confrim_vac_preferences.php">  
-           Zone: <input type="text" name="Zone">
-           Country: <input type="text" name="Country">
-           Town: <input type="text" name="Town">
-           Class: <input type="text" name="Class">
-           Name of Hotel: <input type="text" name="Name_h">
-           Name of Flight company: <input type="text" name="Name_f">
-           Date of day one: <select name="Day">
+        <form method="post" action="confrim_preferences.php">  
+           Name : <input type="text" name="Name" value=<?php $_COOKIE['Name'] == 'myValue' ? print ("") : print $_COOKIE['Name']  ?> >
+       <!--Type: <input type="text" name="Type">
+           Zone: <input type="text" name="Zone">--> 
+           City: <select name="Town">
+                <option value=""></option>
+                <option value="1">תל אביב</option>
+                <option value="2">רמת גן</option>
+                <option value="3">פתח תקווה</option>
+                <option value="4">בקעת אונו</option>
+                <option value="5">הרצליה</option>
+                <option value="6">כפר סבא</option>
+                <option value="7">נתניה</option>
+                <option value="8">זכרון יעקב</option>
+                <option value="9">ירושלים</option>
+                <option value="10">מודיעין</option>
+                <option value="11">באר שבע</option>
+                <option value="12">אשדוד</option>
+                <option value="13">לכיש</option>
+                <option value="14">אילת</option>
+                <option value="15">ראשון לציון</option>
+                <option value="16">חולון</option>
+                <option value="17">רחובות</option>
+                <option value="18">רמלה</option>
+                <option value="19">יבנה</option>
+                <option value="20">חיפה</option>
+                <option value="21">עפולה</option>
+                <option value="22">כרמיאל</option>
+                <option value="23">רמת הגולן</option>
+                <option value="24">ים המלח</option>
+                <option value="25">כל הארץ	</option>
+                </select>
+           Minimum Price: <input type="text" name="MinPrice" value=<?php $_COOKIE['MinPrice'] == 'myValue' ? print ("") : print $_COOKIE['MinPrice']  ?> >
+           Maximum Price: <input type="text" name="MaxPrice" value=<?php $_COOKIE['MaxPrice'] == 'myValue' ? print ("") : print $_COOKIE['MaxPrice']  ?>>  
+           Date Start: <select name="Day_S">
             <option value=""></option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -53,7 +80,7 @@
             <option value="30">30</option>
             <option value="31">31</option>
             </select>
-            <select name="Monthe">
+            <select name="Monthe_S">
                 <option value=""></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -68,7 +95,7 @@
                 <option value="11">11</option>
                 <option value="12">12</option>
                 </select>
-            <select name="Year">
+            <select name="Year_S">
                 <option value=""></option>
                 <option value="2013">2013</option>
                 <option value="2014">2014</option>
@@ -81,7 +108,7 @@
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
                 </select>
-           Date of last day:<select name="LDay">
+            Date End: <select name="Day_E">
             <option value=""></option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -115,7 +142,7 @@
             <option value="30">30</option>
             <option value="31">31</option>
             </select>
-            <select name="LMonthe">
+            <select name="Monthe_E">
                 <option value=""></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -130,7 +157,7 @@
                 <option value="11">11</option>
                 <option value="12">12</option>
                 </select>
-            <select name="LYear">
+            <select name="Year_E">
                 <option value=""></option>
                 <option value="2013">2013</option>
                 <option value="2014">2014</option>
@@ -143,8 +170,14 @@
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
                 </select>
-           Price: <input type="text" name="Price">
-           Discount: <input type="text" name="Discount">
+           Discount: <input type="text" name="Discount" value=<?php $_COOKIE['Discount'] == 'myValue' ? print ("") : print $_COOKIE['Discount']  ?>>
+           Category: <select name="Category">
+                        <option value=""></option>
+                        <option value="1">restaurant</option>
+                        <option value="2">Vacation</option>
+                        <option value="3">consumer</option>
+                    </select>
+            Public: <input type="checkbox" name="Public" value="1" checked>  
            <button type='submit'>go!</button>
         </form>   
     </body>

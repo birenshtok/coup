@@ -25,13 +25,13 @@ two new function:
     function date_null ($d, $m, $y) {
         if (!$d || !$m || !$y) {
             return '00-00-00';
+             print $y;
         } else {
             return "$y-$m-$d";
         }
     }
     // take care of null int field.
     function int_null (&$int) {
-        print ($int);
         if (!$int) {
             $int = '0';
         }
