@@ -60,6 +60,11 @@
     <head>
         <meta charset="utf-8" />
         <title></title>
+        <script type="text/javascript">
+            function check_coup() {
+                
+            }
+        </script>
     </head>
     <body>
             <form method='post' action="insert_prf.php">
@@ -77,6 +82,7 @@
             </form>
             <form method='post' action="Restaurant_pref.php">
             <button type='submit'>EDIT</button> 
+            <a href= check.php><input type="button" value="check if coup exists"/></a>
             </form>
     </body>
 </html>
@@ -173,5 +179,36 @@
             return 'consumer';
             break;
          }
+    }
+    function check(){
+        $name = secure($_REQUEST['Name']);
+        $Town = getcity(secure($_REQUEST['Town']));
+        $category = getcategory(secure($_REQUEST['Category']));
+        $MinPrice = secure($_REQUEST['MinPrice']);
+        $MaxPrice = secure($_REQUEST['MaxPrice']);
+        int_null ($MinPrice);
+        $Date_Sd = secure($_REQUEST['Day_S']);
+        $Date_Sm = secure($_REQUEST['Monthe_S']);
+        $Date_Sy = secure($_REQUEST['Year_S']);
+        $DateS = date_null ($Date_Sd,$Date_Sm,$Date_Sy);
+        $Date_Ed = secure($_REQUEST['Day_E']);
+        $Date_Em = secure($_REQUEST['Monthe_E']);
+        $Date_Ey = secure($_REQUEST['Year_E']);
+        $DateE = date_null ($Date_Ed,$Date_Em,$Date_Ey);
+        $Discount = secure($_REQUEST['Discount']);
+
+        $pref = $data_base->Get_pref();
+        $row = $data_base->Get_Next_Row($pref);
+
+         $result = $data_base->check_requset($name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category);
+         $i = 1;   
+            //check if there were any matches.
+         $is_mach = $data_base->Get_Next_Row($result)['Link'];
+         while ($is_mach)
+         {
+            $is_mach = $data_base->Get_Next_Row($result)['Link'];
+            $i++;
+         }
+         return $i;
     }
 ?>

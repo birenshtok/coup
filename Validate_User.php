@@ -14,6 +14,6 @@
         print("not a user");
     } else {
         $_SESSION['UserIdNum']=$check[ID];
-        header("Location: menu.php" /*Preferences\preferences.php*/);
+        header("Location: menu.php");
     }
 ?>

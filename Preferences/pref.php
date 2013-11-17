@@ -177,7 +177,8 @@
                         <option value="2">Vacation</option>
                         <option value="3">consumer</option>
                     </select>
-            Public: <input type="checkbox" name="Public" value="1" checked>  
+            Public: <input type="checkbox" name="Public" value="1" checked></\br>  
+            <a href= ..\\menu.php><input type="button" value="Menu"/></a>
            <button type='submit'>go!</button>
         </form>   
     </body>

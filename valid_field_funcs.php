@@ -71,6 +71,18 @@ two new function:
             $price="<= '$price'";
         }
     }
+
+    function price_Min_comparable(&$price){
+        if ($price==0){
+            $price = " >= '0'";
+        }
+        else{
+            $price=">= '$price'";
+        }
+    }
+
+
+
     function discount_comparable(&$dis){
         $dis=" >= '$dis'";
     }

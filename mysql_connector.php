@@ -195,8 +195,8 @@ some more functions for the compare were added.
             return $result;
         }
 
-        public function Get_pref_res(){
-            $result = (mysql_query("SELECT * FROM pref_r ORDER BY ID"));
+        public function Get_pref(){
+            $result = (mysql_query("SELECT * FROM pref ORDER BY ID"));
             print mysql_error();
             return $result;
         }
@@ -230,14 +230,36 @@ some more functions for the compare were added.
             print mysql_error();
         }
 
-        /*check_requset_res*/
-        public function check_requset_res($Name, $Type, $Zone, $Town, $price, $Discount){
-            $result = (mysql_query("SELECT * FROM active_coup_res 
-                                    WHERE Name $Name && Town $Town &&
-                                                  price $price && Discount $Discount"));
+        /*check_requset*/
+        public function check_requset($name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category){
+            char_comparable($name);
+            char_comparable($Town); 
+            price_Min_comparable($MinPrice);
+            price_Min_comparable($DateS);
+            price_comparable($MaxPrice);
+            price_comparable($category);
+            price_comparable($DateE);
+            discount_comparable($Discount);
+            $today = date("D m Y ",time());
+
+            $result = (mysql_query("SELECT ID FROM date WHERE Date = '$today'"));
+            $date = $this->Get_Next_Row($result)[ID];
+
+
+            $result = (mysql_query("SELECT * FROM coup 
+                                    WHERE Name $name && Category $category && City $Town && Price $MinPrice && Price $MaxPrice && Discount $Discount
+                                     && Last_day_to_use $DateS && Start_day_to_bay $DateE && Last_day_to_buy > '$date'"));/*
+                                        && Discount $Discount && Last_day_to_buy > '$date' "));*/
             print mysql_error();
             return $result;
         }
+
+
+
+
+
+
+
 
         /*check_requset_vac*/
         public function check_requset_vac($Zone, $Country, $Town, $Rate, $Name_h, $Name_f, $Date_s, $Date_e, $Discount, $price){
@@ -263,8 +285,8 @@ some more functions for the compare were added.
             return $result;
         }
 
-        public function validate_user($mail, $password) {
-            return (mysql_query("SELECT ID FROM customers WHERE Email = '$mail' && Password = '$password'"));
+        public function validate_user($name, $password) {
+            return (mysql_query("SELECT ID FROM customers WHERE Name = '$name' && Password = '$password'"));
         } 
 
         public function is_not_user($mail) {
