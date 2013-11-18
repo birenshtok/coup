@@ -55,8 +55,6 @@ some more functions for the compare were added.
 
             $this->user_id = $this->Get_Last_id('customers') + 1; //insert the next id into the id field
             $this->pref_id = $this->Get_Last_id('pref') + 1;
-            $this->pref_c_id = $this->Get_Last_id('pref_c') + 1;
-            $this->pref_v_id = $this->Get_Last_id('pref_v') + 1;
         }
         public function Set_table_name($name){
             $this->table_name = name;
@@ -237,7 +235,6 @@ some more functions for the compare were added.
             price_Min_comparable($MinPrice);
             price_Min_comparable($DateS);
             price_comparable($MaxPrice);
-            price_comparable($category);
             price_comparable($DateE);
             discount_comparable($Discount);
             $today = date("D m Y ",time());
@@ -247,19 +244,35 @@ some more functions for the compare were added.
 
 
             $result = (mysql_query("SELECT * FROM coup 
-                                    WHERE Name $name && Category $category && City $Town && Price $MinPrice && Price $MaxPrice && Discount $Discount
-                                     && Last_day_to_use $DateS && Start_day_to_bay $DateE && Last_day_to_buy > '$date'"));/*
-                                        && Discount $Discount && Last_day_to_buy > '$date' "));*/
+                                    WHERE Name $name && Category = '$category' && City $Town && Price $MinPrice && Price $MaxPrice && Discount $Discount
+                                     && Last_day_to_use $DateS && Start_day_to_bay $DateE && Last_day_to_buy > '$date'"));
+
+            print mysql_error();
+            return $result;
+        }
+         public function Get_public_coup(){
+            $result = (mysql_query("SELECT * FROM pref WHERE Public = 1"));
             print mysql_error();
             return $result;
         }
 
+        public function Get_Date($id){
+            $result = (mysql_query("SELECT Date FROM date WHERE ID = '$id'"));
+            print mysql_error();
+            return $result;
+        }
 
+        public function Get_City($id){
+            $result = (mysql_query("SELECT City FROM city WHERE Ind = '$id'"));
+            print mysql_error();
+            return $result;
+        }
 
-
-
-
-
+        public function Get_Category($id){
+            $result = (mysql_query("SELECT Category FROM category WHERE Ind = '$id'"));
+            print mysql_error();
+            return $result;
+        }
 
         /*check_requset_vac*/
         public function check_requset_vac($Zone, $Country, $Town, $Rate, $Name_h, $Name_f, $Date_s, $Date_e, $Discount, $price){

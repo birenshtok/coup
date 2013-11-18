@@ -80,9 +80,10 @@
             <h4>Public: <?php $Public == 1 ? print 'yes' : print 'no'; ?></h4>
             <button type='submit'>OK</button> 
             </form>
-            <form method='post' action="Restaurant_pref.php">
+            <form method='post' action="pref.php">
             <button type='submit'>EDIT</button> 
             <a href= check.php><input type="button" value="check if coup exists"/></a>
+            <a href= ..\\menu.php><input type="button" value="Menu"/></a>
             </form>
     </body>
 </html>

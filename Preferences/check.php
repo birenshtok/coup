@@ -44,11 +44,13 @@
          $is_mach = $data_base->Get_Next_Row($result)['Link'];
          while ($is_mach)
          {
-             print ok;
             $is_mach = $data_base->Get_Next_Row($result)['Link'];
             $i++;
          }
          print $i;
 ?>
+        <a href= ..\\menu.php><input type="button" value="Menu"/></a>
+        <a href= insert_prf.php><input type="button" value="OK"/></a>
+        <a href= pref.php><input type="button" value="EDIT"/></a>
     </body>
 </html>
