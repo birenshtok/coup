@@ -18,6 +18,8 @@ session_start();
             $row = $data_base->Get_Next_Row($public_res);
             while ($row){
                 print ('<br>'); 
+                echo ("USER: ".$row[Customer_name]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
+
                 echo ("NAME: ".$row[Name]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
 
                 $temp = $data_base->Get_City($row[Town]);
@@ -39,10 +41,11 @@ session_start();
                 echo ("END DATE: ".$date[Date]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp");
                  
                 echo ("DISCOUNT: ".$row[Discount]."%"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
+
                 echo ('<br>'); 
                 $row = $data_base->Get_Next_Row($public_res);
             }
         ?>
-
+        <a href= menu.php><input type="button" value="Menu"/></a>
     </body>
 </html>

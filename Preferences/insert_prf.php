@@ -43,66 +43,32 @@ add SESSION for all the catcory's
             $type = $_SESSION['type'];
             $user_id = $_SESSION['UserIdNum'];
             $Data_Base = new mysql_connector();
-            /*if ($type == 'Con') {
-                $category = secure($_SESSION['pref']);
-                $name = secure($_SESSION['Product']);
-                $company = secure($_SESSION['Company']);
-                $Date_d = secure($_SESSION['Day']);
-                $Date_m = secure($_SESSION['Monthe']);
-                $Date_y = secure($_SESSION['Year']);
-                $Date = date_null ($Date_d,$Date_m,$Date_y);
-                $Price = secure($_SESSION['Price']);
-                int_null ($Price);
-                $Discount = secure($_SESSION['Discount']);
-                int_null ($Discount);
-                $Data_Base->insert_pref_cons($user_id, $category, $name, $company, $Date, $Price, $Discount);
-            } elseif ($type == 'Res') { */
-                $name = secure($_SESSION['Name']);
-                $Town = secure($_SESSION['Town']);
+            $name = secure($_SESSION['Name']);
+            $Town = secure($_SESSION['Town']);
 
-                $MinPrice = secure($_SESSION['MinPrice']);
-                $MaxPrice = secure($_SESSION['MaxPrice']);
-                int_null ($MinPrice);
-                int_null ($MaxPrice);
+            $MinPrice = secure($_SESSION['MinPrice']);
+            $MaxPrice = secure($_SESSION['MaxPrice']);
+            int_null ($MinPrice);
+            int_null ($MaxPrice);
 
-                $Date_d = secure($_SESSION['Day_S']);
-                $Date_m = secure($_SESSION['Monthe_S']);
-                $Date_y = secure($_SESSION['Year_S']);
-                $DateS = date_null ($Date_d,$Date_m,$Date_y);
+            $Date_d = secure($_SESSION['Day_S']);
+            $Date_m = secure($_SESSION['Monthe_S']);
+            $Date_y = secure($_SESSION['Year_S']);
+            $DateS = date_null ($Date_d,$Date_m,$Date_y);
 
-                $Date_d = secure($_SESSION['Day_E']);
-                $Date_m = secure($_SESSION['Monthe_E']);
-                $Date_y = secure($_SESSION['Year_E']);
-                $DateE = date_null ($Date_d,$Date_m,$Date_y);
+            $Date_d = secure($_SESSION['Day_E']);
+            $Date_m = secure($_SESSION['Monthe_E']);
+            $Date_y = secure($_SESSION['Year_E']);
+            $DateE = date_null ($Date_d,$Date_m,$Date_y);
 
-                $Discount = secure($_SESSION['Discount']);
-                $Public = secure($_SESSION['Public']);
-                $category = secure($_SESSION['Category']);
-                int_null ($Discount);
-                int_null ($Public);
-                $Data_Base->insert_pref($user_id, $name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category);
-          /*  } else {
-                $Zone = secure($_SESSION['Zone']);
-                $Country = secure($_SESSION['Country']);
-                $Town = secure($_SESSION['Town']);
-                $Class = secure($_SESSION['Class']);
-                int_null ($Class);
-                $Name_hotel = secure($_SESSION['Name_hotel']);
-                $Name_flight = secure($_SESSION['Name_flight']);
-                $Date_sd = secure($_SESSION['Day']);
-                $Date_sm = secure($_SESSION['Monthe']);
-                $Date_sy = secure($_SESSION['Year']);
-                $Date_s = date_null ($Date_sd,$Date_sm,$Date_sy);
-                $Date_ld = secure($_SESSION['LDay']);
-                $Date_lm = secure($_SESSION['LMonthe']);
-                $Date_ly = secure($_SESSION['LYear']);
-                $Date_e = date_null ($Date_ld, $Date_lm, $Date_ly);
-                $Price = secure($_SESSION['price']);
-                int_null ($Price);
-                $Discount = secure($_SESSION['discount']);
-                int_null ($Discount);
-                $Data_Base->insert_pref_vac($user_id, $Zone, $Country, $Town, $Class, $Name_hotel, $Name_flight, $Date_s, $Date_e, $Price, $Discount);
-            }*/
+            $Discount = secure($_SESSION['Discount']);
+            $Public = secure($_SESSION['Public']);
+            $category = secure($_SESSION['Category']);
+            int_null ($Discount);
+            int_null ($Public);
+            $Data_Base->insert_pref($user_id, $name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category);
+            header("Location: ..\\menu.php");
         ?>        
+
     </body>
 </html>
