@@ -20,7 +20,7 @@
     $Public = 0;
     $category = $row[Category];
     $Data_Base->insert_Copy_pref($user_id, $name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category);
-    //header("Location: ..\\menu.php");
+    header("Location: ..\\menu.php");
     
 ?>
 
