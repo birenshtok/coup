@@ -1,6 +1,6 @@
 <?php
 session_start();
-            require "mysql_connector.php";
+            require "..\mysql_connector.php";
            
 ?>
 
@@ -42,10 +42,19 @@ session_start();
                  
                 echo ("DISCOUNT: ".$row[Discount]."%"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
 
+
+                echo ("NUM: ".$row[ID]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
+
                 echo ('<br>'); 
                 $row = $data_base->Get_Next_Row($public_res);
+                
             }
         ?>
-        <a href= menu.php><input type="button" value="Menu"/></a>
+        <a href= ..\\menu.php><input type="button" value="Menu"/></a>
+        <form method="post" action="copy_pref.php">  
+         Num: <input type="text" name="num">
+        <button type='submit'>COPY</button>
+        </form>   
+
     </body>
 </html>

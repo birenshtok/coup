@@ -68,9 +68,9 @@ some more functions for the compare were added.
         public function get_table_name () {
             return $this->table_name;
         }
-        public function get_user_name () {
+       /* public function get_user_name () {
             return $this->user_name;
-        }
+        }*/
         public function get_password () {
             return $this->password;
         }
@@ -103,11 +103,52 @@ some more functions for the compare were added.
 
         public function insert_pref_cons($user_id, $category, $name, $company, $date, $price, $discount){
             $result = (mysql_query("INSERT INTO pref_c(Customer_ID,Category,Name,Company,Date,Price,Discount,ID) 
-                                    VALUES($user_id,'$category','$name','$company','$date','$price','$discount',$this->pref_c_id)"));
+                                    VALUES('$user_id,'$category','$name','$company','$date','$price','$discount',$this->pref_c_id)"));
             print mysql_error();
             return $result;
         }
 
+        public function insert_Copy_pref($user_id, $name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category){
+
+            $today = time(); // today's date in sec.
+            $today = date("Y-m-d",$today);
+            $result2 = mysql_query("SELECT * from date WHERE '$today' = Date");
+		    $row = $this->Get_Next_Row($result2);
+            $today = $row['ID'];
+            if($MinPrice == "")
+              $MinPrice = 0;
+            if($MaxPrice == "")
+              $MaxPrice = 0;
+
+            if($DateS == "")
+              $DateS = 0;
+            if($DateE == "")
+              $DateE = 0;
+
+            if($category == "")
+                $category = 0;
+
+             if($Discount == "")
+                $Discount = 0;
+
+            $result2 = $this->get_user_name($user_id);
+            $row = $this->Get_Next_Row($result2);
+            $user_name = $row['Name'];
+
+             $result = (mysql_query("INSERT INTO pref(Customer_ID,Name,Town,Price_min,Price_max,Date_start,Date_end,Discount,ID,Category,Public,Date_of_request,Customer_name) 
+                                    VALUES('$user_id', '$name', $Town, '$MinPrice', '$MaxPrice',$DateS,$DateE,$Discount,$this->pref_id,'$category','$Public','$today','$user_name')"));
+            print mysql_error();
+            return $result;
+
+
+        }
+
+
+        public function get_user_name($id){
+            $result = mysql_query("SELECT Name from customers WHERE '$id' = ID");
+            print mysql_error();
+            return $result;
+        }
 
         public function insert_pref($user_id, $name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category) {
             if($Town == "")
@@ -143,8 +184,12 @@ some more functions for the compare were added.
 		    $row = $this->Get_Next_Row($result2);
             $today = $row['ID'];
 
-            $result = (mysql_query("INSERT INTO pref(Customer_ID,Name,Town,Price_min,Price_max,Date_start,Date_end,Discount,ID,Category,Public,Date_of_request) 
-                                    VALUES('$user_id', '$name', '$Town', '$MinPrice', '$MaxPrice','$Date_Start','$Date_End',$Discount,$this->pref_id,'$category','$Public','$today')"));
+            $result2 = $this->get_user_name($user_id);
+            $row = $this->Get_Next_Row($result2);
+            $user_name = $row['Name'];
+
+            $result = (mysql_query("INSERT INTO pref(Customer_ID,Name,Town,Price_min,Price_max,Date_start,Date_end,Discount,ID,Category,Public,Date_of_request,Customer_name) 
+                                    VALUES('$user_id', '$name', '$Town', '$MinPrice', '$MaxPrice','$Date_Start','$Date_End',$Discount,$this->pref_id,'$category','$Public','$today','$user_name')"));
             print mysql_error();
             return $result;
         }
@@ -211,6 +256,14 @@ some more functions for the compare were added.
             return $result;
         }
 
+         public function Get_pref_by_id($ID){
+            $result = (mysql_query("SELECT * FROM pref where ID = '$ID'"));
+            print mysql_error();
+            return $result;
+        }
+
+
+
         public function Get_links(){
             $result = (mysql_query("SELECT * FROM id_link ORDER BY ID"));
             print mysql_error();
@@ -274,24 +327,6 @@ some more functions for the compare were added.
             return $result;
         }
 
-        /*check_requset_vac*/
-        public function check_requset_vac($Zone, $Country, $Town, $Rate, $Name_h, $Name_f, $Date_s, $Date_e, $Discount, $price){
-             $result = (mysql_query("SELECT * FROM coup_vac 
-                                    WHERE Zone $Zone && Country $Country && Town $Town &&
-                                                  Rate $Rate && Name_h $Name_h && Name_f $Name_f "));
-            print mysql_error();
-            return $result;
-        }
- 
-        /*check_requset_con*/
-        public function check_requset_con($category, $name, $company, $date, $price, $discount){
-            $result = (mysql_query("SELECT * FROM coup_consumer 
-                                    WHERE category $category && name $name && company $company &&
-                                                  date $date && price $price && discount $discount"));
-            print mysql_error();
-            return $result;
-        }
-
         public function Get_mail($id){
             $result = (mysql_query("SELECT Email FROM customers WHERE ID = $id"));
             print mysql_error();
@@ -328,5 +363,23 @@ some more functions for the compare were added.
             print mysql_error();
         }
     }
+    /*
+        public function check_requset_vac($Zone, $Country, $Town, $Rate, $Name_h, $Name_f, $Date_s, $Date_e, $Discount, $price){
+             $result = (mysql_query("SELECT * FROM coup_vac 
+                                    WHERE Zone $Zone && Country $Country && Town $Town &&
+                                                  Rate $Rate && Name_h $Name_h && Name_f $Name_f "));
+            print mysql_error();
+            return $result;
+        }
+ 
+      
+        public function check_requset_con($category, $name, $company, $date, $price, $discount){
+            $result = (mysql_query("SELECT * FROM coup_consumer 
+                                    WHERE category $category && name $name && company $company &&
+                                                  date $date && price $price && discount $discount"));
+            print mysql_error();
+            return $result;
+        }
+        */
 ?>
 

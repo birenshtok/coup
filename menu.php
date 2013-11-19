@@ -10,7 +10,7 @@
     </head>
     <body>
          <a href= Preferences\pref.php><input type="button" value="Add reqwest"/></a>
-         <a href= Get_public.php><input type="button" value="public"/></a>
+         <a href= Public\Get_public.php><input type="button" value="public"/></a>
 
     </body>
 </html>
