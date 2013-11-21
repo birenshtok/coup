@@ -1,0 +1,2 @@
+src\\Templates\\BigDeal.txt
+src\\Templates\\Buy2.txt

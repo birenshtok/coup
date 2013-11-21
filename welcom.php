@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    include "mysql_connector.php";
+    include "secure.php";
+    $data_base = new mysql_connector();
+    print $data_base->Get_Last_id("coup");
+    print "&nbsp";
+    print "coupons now in the site";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

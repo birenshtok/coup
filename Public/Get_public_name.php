@@ -1,6 +1,8 @@
 <?php
-session_start();
-            require "..\mysql_connector.php";
+    include "..\secure.php";
+    include "..\\valid_field_funcs.php";
+    include "..\mysql_connector.php";
+    session_start();
            
 ?>
 
@@ -13,8 +15,8 @@ session_start();
     <body>
         <?php
            $data_base = new mysql_connector();
-
-            $public_res = $data_base->Get_public_coup();
+           $user_name=secure($_REQUEST['name']);
+            $public_res = $data_base-> Get_public_coup_bu_name($user_name);
             $row = $data_base->Get_Next_Row($public_res);
             while ($row){
                 print ('<br>'); 
@@ -51,13 +53,10 @@ session_start();
             }
         ?>
         <a href= ..\\menu.php><input type="button" value="Menu"/></a>
+        <a href= Get_public.php><input type="button" value="public"/></a>
         <form method="post" action="copy_pref.php">  
          Num: <input type="text" name="num">
         <button type='submit'>COPY</button>
-        </form>  
-        <form method="post" action="Get_public_name.php">  
-         Get public user: <input type="text" name="name">
-        <button type='submit'>go</button>
         </form>   
 
     </body>

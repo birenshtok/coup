@@ -178,6 +178,16 @@
                         <option value="3">consumer</option>
                     </select>
             Public: <input type="checkbox" name="Public" value="1" checked></\br>  
+            <?php unset($_COOKIE['MinPrice']); 
+                  unset($_COOKIE['MaxPrice']); 
+                  unset($_COOKIE['Day_S']); 
+                  unset($_COOKIE['Monthe_S']); 
+                  unset($_COOKIE['Year_S']); 
+                  unset($_COOKIE['Day_E']); 
+                  unset($_COOKIE['Monthe_E']); 
+                  unset($_COOKIE['Discount']); 
+                  unset($_COOKIE['Public']);  
+            ?>
             <a href= ..\\menu.php><input type="button" value="Menu"/></a>
            <button type='submit'>go!</button>
         </form>   

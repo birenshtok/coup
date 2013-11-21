@@ -39,15 +39,45 @@
 
          $result = $data_base->check_requset($name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category);
          
+         $row = $data_base->Get_Next_Row($result);
          $i = 0;   
             //check if there were any matches.
-         $is_mach = $data_base->Get_Next_Row($result)['Link'];
+         $is_mach = $row[Link];
+ 
          while ($is_mach)
          {
-            $is_mach = $data_base->Get_Next_Row($result)['Link'];
+             echo ("NAME: ".$row[Name]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
+
+             $temp = $data_base->Get_City($row[City]);
+             $city = $data_base->Get_Next_Row($temp);
+             echo ("CITY: ".$city[City]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
+
+             $temp = $data_base->Get_Category($row[Category]);
+             $category = $data_base->Get_Next_Row($temp);
+             echo ("CATEGORY: ".$category[Category]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
+             echo ("PRICE: "."₪".$row[Price]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
+
+             $temp = $data_base->Get_Date($row[Last_day_to_buy]);
+             $date = $data_base->Get_Next_Row($temp);
+             echo ("LAST DAY TO BUY: ".$date[Date]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
+
+             $temp = $data_base->Get_Date($row[Last_day_to_use]);
+             $date = $data_base->Get_Next_Row($temp);
+             echo ("LAST DAY TO USE: ".$date[Date]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp");
+                 
+             echo ("DISCOUNT: ".$row[Discount]."%"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"); 
+
+            echo ("Link: ".$row[Link]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp");
+
+            echo ("site: ".$row[site]."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp");
+
+            echo ('<br>');
+            $row = $data_base->Get_Next_Row($result);
+            $is_mach = $row['Link'];
             $i++;
          }
-         print $i;
+         echo ("num of coup: ".$i."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp"."&nbsp");
+         echo ('<br>');
 ?>
         <a href= ..\\menu.php><input type="button" value="Menu"/></a>
         <a href= insert_prf.php><input type="button" value="OK"/></a>

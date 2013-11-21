@@ -108,6 +108,13 @@ some more functions for the compare were added.
             return $result;
         }
 
+        public function change_user($user_email,$password,$user_id){
+            $result = (mysql_query("UPDATE customers SET Email='$user_email', Password='$password' where ID = $user_id"));
+            print mysql_error();
+            return $result;
+        }
+
+
         public function insert_Copy_pref($user_id, $name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category){
 
             $today = time(); // today's date in sec.
@@ -284,27 +291,40 @@ some more functions for the compare were added.
         /*check_requset*/
         public function check_requset($name, $Town, $MinPrice, $MaxPrice, $DateS, $DateE, $Discount, $Public, $category){
             char_comparable($name);
-            char_comparable($Town); 
+            price_comparable($Town);
             price_Min_comparable($MinPrice);
             price_Min_comparable($DateS);
             price_comparable($MaxPrice);
+            price_comparable($Discount);
+            price_comparable($category);
             price_comparable($DateE);
-            discount_comparable($Discount);
             $today = date("D m Y ",time());
 
-            $result = (mysql_query("SELECT ID FROM date WHERE Date = '$today'"));
-            $date = $this->Get_Next_Row($result)[ID];
-
+            $result = (mysql_query("SELECT ID FROM date WHERE Date = CURDATE()"));
+            $row = $this->Get_Next_Row($result);
+            $date = $result[ID];
 
             $result = (mysql_query("SELECT * FROM coup 
-                                    WHERE Name $name && Category = '$category' && City $Town && Price $MinPrice && Price $MaxPrice && Discount $Discount
-                                     && Last_day_to_use $DateS && Start_day_to_bay $DateE && Last_day_to_buy > '$date'"));
+                                    WHERE Name $name && Category $category && City $Town && Price $MinPrice && Price $MaxPrice && Discount $Discount
+                                     && Last_day_to_use $DateS && Start_day_to_bay $DateE &&( Last_day_to_buy > '$date' || Last_day_to_buy = '$date') "));
 
             print mysql_error();
             return $result;
         }
          public function Get_public_coup(){
             $result = (mysql_query("SELECT * FROM pref WHERE Public = 1"));
+            print mysql_error();
+            return $result;
+        }
+
+        public function Get_public_coup_bu_name($name){
+            $result = (mysql_query("SELECT * FROM pref WHERE Public = 1 && Customer_name LIKE '$name'"));
+            print mysql_error();
+            return $result;
+        }
+
+        public function Get_coup_by_ID($id){
+            $result = (mysql_query("SELECT * FROM pref WHERE  ID LIKE '$id'"));
             print mysql_error();
             return $result;
         }
@@ -347,7 +367,7 @@ some more functions for the compare were added.
             }
         }
 
-        private function Get_Last_id($table){
+        public function Get_Last_id($table){
             $result = (mysql_query("select ID from $table ORDER BY ID DESC LIMIT 1"));
             $Last_ID = mysql_fetch_assoc ($result);
             return ($Last_ID[ID]);
@@ -377,9 +397,8 @@ some more functions for the compare were added.
             $result = (mysql_query("SELECT * FROM coup_consumer 
                                     WHERE category $category && name $name && company $company &&
                                                   date $date && price $price && discount $discount"));
-            print mysql_error();
-            return $result;
+           
         }
         */
-?>
 
+?>
